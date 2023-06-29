@@ -113,7 +113,7 @@ export default function Home() {
               Nicholas Bridgemohan
             </h2>
             <h3 className="text-2xl py-2 md:text-3xl text-gray-900 dark:text-gray-300">
-              {emoji1} Senior Developer {emoji2}
+              Senior Developer {emoji2}
             </h3>
             <p className="text-md py-5 leading-8 md:text-xl max-w-xl mx-auto  text-gray-800 dark:text-gray-300">
               I am a highly skilled and experienced full-stack developer with a
@@ -175,7 +175,7 @@ export default function Home() {
               Education
             </h2>
             <h3 className="text-2xl py-2 md:text-3xl text-gray-900 dark:text-gray-300">
-              Take a look at my educational background 📚
+              Take a look at my educational background
             </h3>
             <p className="text-md py-5 leading-8 md:text-xl max-w-xl mx-auto  text-gray-800 dark:text-gray-300">
               See the Academic Institutes that I&apos;ve been to
@@ -210,7 +210,7 @@ export default function Home() {
               Experience
             </h2>
             <h3 className="text-2xl py-2 md:text-3xl text-gray-900 dark:text-gray-300">
-              7+ Years in Various Industries 👴🏽
+              7+ Years in Various Industries
             </h3>
             <p className="text-md py-5 leading-8 md:text-xl max-w-xl mx-auto  text-gray-800 dark:text-gray-300">
               Here is a list of my past and current employment
