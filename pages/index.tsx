@@ -27,7 +27,7 @@ import Experience from "./components/Experience";
 import Education from "./components/Education";
 
 export default function Home() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   let image;
   if (darkMode) {
