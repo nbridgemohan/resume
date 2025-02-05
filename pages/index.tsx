@@ -10,8 +10,8 @@ import {
   AiFillMail,
 } from "react-icons/ai";
 import Image from "next/image";
-import nicho from "../public/nicho.png";
-import nichodark from "../public/nichodark.png";
+import nicho from "../public/nicholasorig.png";
+import nichodark from "../public/nicholasorig.png";
 import bermudez from "../public/workplaces/bermudez.png";
 import kaizen from "../public/workplaces/kaizen.png";
 import evolve from "../public/workplaces/evolve.png";
@@ -33,7 +33,7 @@ export default function Home() {
   if (darkMode) {
     image = (
       <Image
-        alt="plz hire me :("
+        alt=""
         src={nichodark}
         fill
         style={{ objectFit: "cover" }}
@@ -42,7 +42,7 @@ export default function Home() {
   } else {
     image = (
       <Image
-        alt="plz hire me :("
+        alt=""
         src={nicho}
         fill
         style={{ objectFit: "cover" }}
