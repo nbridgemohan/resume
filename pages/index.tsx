@@ -8,6 +8,7 @@ import {
   AiFillYoutube,
   AiOutlineMail,
   AiFillMail,
+  AiFillGithub,
 } from "react-icons/ai";
 import Image from "next/image";
 import nicho from "../public/nicholasorig.png";
@@ -113,12 +114,11 @@ export default function Home() {
               Nicholas Bridgemohan
             </h2>
             <h3 className="text-2xl py-2 md:text-3xl text-gray-900 dark:text-gray-300">
-              Senior Developer {emoji2}
+              Senior Software Engineer {emoji2}
             </h3>
-            <p className="text-md py-5 leading-8 md:text-xl max-w-xl mx-auto  text-gray-800 dark:text-gray-300">
-              I am a highly skilled and experienced full-stack developer with a
-              strong background in technologies using Javascript, PHP and Java
-              and constantly in pursuit of learning more.
+            <p className="text-md py-5 leading-8 md:text-xl  mx-auto  text-gray-800 dark:text-gray-300">
+              A results-driven developer skilled in agile development, business intelligence, and technical solutions. Notably led the backend development of the myGGOnline platform, transforming the regional insurance sector. Experienced in API management, cloud services, and database systems, with a strong focus on innovation and client collaboration.
+
             </p>
           </div>
 
@@ -141,12 +141,11 @@ export default function Home() {
             {/* <a target="_blank" href="https://twitter.com/sqrpants">
               <AiFillTwitterCircle className="dark:fill-white" />
             </a>
-            <a target="_blank" href="https://www.linkedin.com/in/bridgemohan/">
-              <AiFillLinkedin className="dark:fill-white" />
-            </a>
+
             <a target="_blank" href="https://www.youtube.com/@bridgemohan">
               <AiFillYoutube className="dark:fill-white" />
             </a> */}
+
             <a target="_blank" href="tel:1-868-279-3914">
               <MdCall className="dark:fill-white" />
             </a>
@@ -162,6 +161,13 @@ export default function Home() {
             >
               <AiFillMail className="dark:fill-white" />
             </a>
+            <a target="_blank" href="https://www.linkedin.com/in/bridgemohan/">
+              <AiFillLinkedin className="dark:fill-white" />
+            </a>
+            <a target="_blank" href="https://github.com/nbridgemohan">
+              <AiFillGithub className="dark:fill-white" />
+            </a> 
+                       
           </div>
         </section>
 
@@ -210,7 +216,7 @@ export default function Home() {
               Experience
             </h2>
             <h3 className="text-2xl py-2 md:text-3xl text-gray-900 dark:text-gray-300">
-              7+ Years in Various Industries
+              10+ Years in Various Industries
             </h3>
             <p className="text-md py-5 leading-8 md:text-xl max-w-xl mx-auto  text-gray-800 dark:text-gray-300">
               Here is a list of my past and current employment
@@ -219,16 +225,31 @@ export default function Home() {
 
           <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-16 justify-center">
             <Experience
-              time={"09 / 2021 - Current"}
-              company={"Evolve Mortgage Services"}
-              role={"Senior Developer"}
+              time={"03 / 2024 - Present"}
+              company={"Bermudez Group Services Ltd."}
+              role={"Systems Solutions Architect"}
               summary={
-                " Developed new features and functionality on Java based mortgage enterprise solution for the company. Created NodeJS app to allow communication and editing of data on legacy applications. Developed features on Asp.net Core based app using MISMO conventions."
+                "Design, develop, and maintain enterprise applications for payroll, manufacturing, and HR functions across the Bermudez Group of Companies. Upgraded server reporting systems and facilitated data migrations for Holiday Snacks Limited and Bermudez Biscuit Company to new servers. Revamped Django-based payroll systems to facilitate the sending of bonus emails and other data. Created and deployed archive SQL Cubes for OPCOs in the group. Developed and deployed HSE Near Miss application using Laravel."
               }
               techStack={
-                "J2EE, MSSQL / NodeJS, MSSQL, ExpressJS, ReactJS / Asp.net Core"
+                "Django, SQL, Laravel, Python, SQL Server"
               }
-              skills={"MISMO Mapping, Eclipse IDE, Legacy Codebase Debugging"}
+              skills={"Enterprise Application Development, Data Migration, System Architecture"}
+              url={"https://www.bermudezgroup.com"}
+              image={bermudez}
+            />
+
+            <Experience
+              time={"09 / 2021 - 03 / 2024"}
+              company={"Evolve Mortgage Services, LLC"}
+              role={"Senior Developer"}
+              summary={
+                "Collaborated with a team of mortgage experts to design and develop solutions for mortgage applications in the United States. Played a key role in the implementation of a Java-based mortgage application solution, enabling providers in the U.S. to process applications efficiently. Developed a Node.js-based application to parse MISMO files and output them in a readable format, significantly improving the team’s efficiency in reviewing mortgage applications."
+              }
+              techStack={
+                "Java, Node.js, MISMO, SQL"
+              }
+              skills={"Mortgage Application Development, MISMO Parsing, Team Collaboration"}
               url={"https://www.evolvemortgageservices.com"}
               image={evolve}
             />
@@ -236,30 +257,30 @@ export default function Home() {
             <Experience
               time={"12 / 2019 - 08 / 2021"}
               company={"Guardian Group"}
-              role={"Full Stack Developer"}
+              role={"Full-Stack Developer"}
               summary={
-                "Spearheded back-end development on myGGOnline platform which allowed Guardian group to consolidate multiple backend customer and transactional data stores allowing across three companies providing a unified customer experience where a customer can access all real time portfolio - life, health , pension, mutual funds on one portal."
+                "Worked with a team to design and develop the front-end and back-end of myGGOnline, an insurance and investments application serving the Caribbean region. Led back-end development, leading two junior developers for the myGGOnline platform, consolidating customer and transactional data across three companies via Azure APIs. Facilitated web-penetration testing of back-end with external vendor and coded patches to fix vulnerabilities. Collaborated with the front-end team to design and code prototypes for a ReactJS-based front-end. Successfully launched an application that provided a real-time portfolio solution, integrating life, health, pension, and mutual fund data in a unified portal."
               }
-              techStack={"MongoDB, ExpressJS, ReactJS & NodeJS(TypeScript)"}
-              skills={
-                "Microservices, API Management, Azure DevOps & CI/CD, Penetration Testing"
+              techStack={
+                "ReactJS, Azure, SQL, Node.js"
               }
-              url={"https://www.myguardiangroup.com/"}
+              skills={"Full-Stack Development, API Integration, Web Security"}
+              url={"https://www.myggonline.com"}
               image={gg}
             />
 
             <Experience
               time={"05 / 2018 - 12 / 2019"}
-              company={"Bermudez Group Services"}
+              company={"Bermudez Group Services Ltd."}
               role={"Programmer/Analyst"}
               summary={
-                "Developed various reports based on data entered by truck salesmen on proprietary handheld devices. Created new commissions report system, alongside custom applications to replace the old commissions report system thereby increasing efficiency, accuracy and ease of delivery in Bermudez Sales."
+                "Designed, developed and maintained sales applications across the Bermudez Group of Companies. Launched a new commission reporting system for Bermudez Biscuit Company, enabling on-demand calculations of commissions for salesmen. Developed and implemented an SQL data interface to transfer manufacturing and production data to Dynamics AX daily."
               }
-              techStack={"Apache/ MSSQL / PHP"}
-              skills={
-                "Crystal Reports, Microsoft Reporting Services, MSSQL, ERP (MS Dynamics) Scripting"
+              techStack={
+                "SQL, Dynamics AX, .NET"
               }
-              url={"http://www.bermudezgroupltd.com/"}
+              skills={"Sales Application Development, Data Interface Implementation, SQL"}
+              url={"https://www.bermudezgroup.com"}
               image={bermudez}
             />
 
@@ -268,37 +289,43 @@ export default function Home() {
               company={"Ministry of Finance, Treasury Division"}
               role={"Information Systems Specialist"}
               summary={
-                "Administered financial reports and maintained database for the Government Payment System of Trinidad and Tobago, to be used by the Comptroller of Accounts for reporting to the various governmental ministries. Developed report to summarize all data and spending for each financial year by ministry thereby increasing efficiency for the Treasury Division of the Ministry of Finance."
+                "Administered financial reporting and maintained the database for the Trinidad and Tobago Government Payment System. Collaborated with the Comptroller of Accounts to generate financial reports for internal use within the Ministry of Finance. Implemented critical reports reviewed in Parliament by the Minister of Finance."
               }
-              techStack={"AspNet / MSSQL"}
-              skills={"MSSQL, SQL Reporting Server"}
-              url={"https://www.finance.gov.tt/"}
+              techStack={
+                "SQL, Financial Reporting, Database Management"
+              }
+              skills={"Financial Reporting, Database Administration, Government Systems"}
+              url={"https://www.finance.gov.tt"}
               image={mofe}
             />
 
             <Experience
               time={"02 / 2017 - 05 / 2017"}
-              company={"Monster Media Group"}
+              company={"Monster Media Group Ltd."}
               role={"Web Developer"}
               summary={
-                "Designed insurance brokerage platform using Laravel. Performed website development using Wordpress and HTML/CSS/JS alongside team of graphic designers."
+                "Developed websites using WordPress and HTML/CSS/JavaScript in collaboration with graphic designers and social media experts. Designed and developed an insurance brokerage platform using Laravel. Fulfilled client requests for website modifications using WordPress and HTML/CSS/JavaScript."
               }
-              techStack={"PHP / MSSQL"}
-              skills={"Laravel, Wordpress, CodeIgniter"}
-              url={"https://www.monstermediagroup.com/"}
+              techStack={
+                "WordPress, HTML/CSS, JavaScript, Laravel"
+              }
+              skills={"Web Development, Client Collaboration, Platform Development"}
+              url={"https://www.monstermediagroup.com"}
               image={monstermedia}
             />
 
             <Experience
               time={"11 / 2015 - 02 / 2017"}
-              company={"Kaizen Environmental Services Trinidad Ltd"}
+              company={"Kaizen Environmental Services Trinidad Ltd."}
               role={"Software Developer"}
               summary={
-                "Designed and developed multi-departmental inventory management system as a solo developer. System utilized barcodereading, PDF printing and custom PDF signature system."
+                "Solo developer responsible for designing and developing a company-wide waste inventory management system. Launched a waste inventory management system using only PHP and HTML/CSS/JavaScript, featuring authentication/authorization, barcode reading, and document signing functionalities."
               }
-              techStack={"Linux, Nginx, MySQL, PHP"}
-              skills={"Linux Terminal, Javascript"}
-              url={"http://www.kaizen-tt.com/main.php"}
+              techStack={
+                "PHP, HTML/CSS, JavaScript"
+              }
+              skills={"Solo Development, Inventory Management, Authentication/Authorization"}
+              url={"https://www.kaizenestt.com"}
               image={kaizen}
             />
           </div>
@@ -339,7 +366,7 @@ export default function Home() {
         </section> */}
         <footer>
           <div className="text-center">
-            <p>&#169; 2023 Nicholas Bridgemohan</p>
+            <p>&#169; 2025 Nicholas Bridgemohan</p>
           </div>
         </footer>
       </main>
