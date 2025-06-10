@@ -118,7 +118,7 @@ export default function Contact() {
               </span>
             </h1>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-              Ready to discuss your IT consulting needs? Let's explore how we can help transform your business through technology.
+              Ready to discuss your IT consulting needs? Let&apos;s explore how we can help transform your business through technology.
             </p>
           </motion.div>
 
@@ -135,7 +135,7 @@ export default function Contact() {
               
               {submitSuccess && (
                 <div className="mb-6 p-4 bg-green-500/20 border border-green-500 rounded-md">
-                  <p className="text-green-300">Your message has been sent successfully! We'll get back to you soon.</p>
+                  <p className="text-green-300">Your message has been sent successfully! We&apos;ll get back to you soon.</p>
                 </div>
               )}
 
@@ -284,7 +284,7 @@ export default function Contact() {
               <div className="pt-8 border-t border-gray-700">
                 <h3 className="text-lg font-medium text-gray-200 mb-4">Business Hours</h3>
                 <p className="text-gray-400">
-                  We're available for consultations and support during business hours. 
+                  We&apos;re available for consultations and support during business hours. 
                   For urgent matters, please call or email us directly.
                 </p>
               </div>

@@ -239,7 +239,7 @@ export default function Home() {
           >
             <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Technology?</h2>
             <p className="text-xl text-gray-300 mb-8">
-              Let's discuss how our IT software consulting services can help your business grow.
+              Let&apos;s discuss how our IT software consulting services can help your business grow.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Link href="/contact" legacyBehavior>
