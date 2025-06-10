@@ -69,7 +69,7 @@ export default function Contact() {
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white overflow-hidden">
       <Head>
         <title>Contact Us | Bridgemohan Technologies</title>
-        <meta name="description" content="Get in touch with our application design team" />
+        <meta name="description" content="Get in touch with our IT software consulting team" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -118,7 +118,7 @@ export default function Contact() {
               </span>
             </h1>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-              We'd love to hear about your project. Let's create something amazing together.
+              Ready to discuss your IT consulting needs? Let's explore how we can help transform your business through technology.
             </p>
           </motion.div>
 
@@ -221,7 +221,7 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     className="w-full px-4 py-2 bg-gray-900/50 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
-                    placeholder="Tell us about your project and how we can help..."
+                    placeholder="Tell us about your IT consulting needs and how we can help transform your business..."
                   ></textarea>
                 </div>
                 
@@ -246,7 +246,7 @@ export default function Contact() {
               <div>
                 <h2 className="text-2xl font-semibold mb-6">Contact Information</h2>
                 <p className="text-gray-300 mb-8">
-                  Need to discuss your project in more detail? Reach out to us directly through any of these channels.
+                  Ready to discuss your IT consulting needs? Reach out to us directly to explore how we can help transform your business.
                 </p>
               </div>
               
@@ -272,8 +272,8 @@ export default function Contact() {
                   <div>
                     <h3 className="text-lg font-medium text-gray-200">Phone</h3>
                     <p className="text-gray-400">
-                      <a href="tel:+1-868-279-3914" className="hover:text-purple-400 transition-colors">
-                        +1 (868) 279-3914
+                      <a href="tel:18682793914" className="hover:text-purple-400 transition-colors">
+                        (868) 279-3914
                       </a>
                     </p>
                   </div>
@@ -282,40 +282,14 @@ export default function Contact() {
               </div>
               
               <div className="pt-8 border-t border-gray-700">
-                <h3 className="text-lg font-medium text-gray-200 mb-4">Connect with us</h3>
-                <div className="flex space-x-4">
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="bg-gray-800 hover:bg-blue-500/20 p-3 rounded-full transition-colors">
-                    <AiFillLinkedin className="text-xl" />
-                  </a>
-                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="bg-gray-800 hover:bg-blue-500/20 p-3 rounded-full transition-colors">
-                    <AiOutlineTwitter className="text-xl" />
-                  </a>
-                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="bg-gray-800 hover:bg-blue-500/20 p-3 rounded-full transition-colors">
-                    <AiOutlineInstagram className="text-xl" />
-                  </a>
-                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="bg-gray-800 hover:bg-blue-500/20 p-3 rounded-full transition-colors">
-                    <AiFillGithub className="text-xl" />
-                  </a>
-                </div>
+                <h3 className="text-lg font-medium text-gray-200 mb-4">Business Hours</h3>
+                <p className="text-gray-400">
+                  We're available for consultations and support during business hours. 
+                  For urgent matters, please call or email us directly.
+                </p>
               </div>
               
-              <div className="pt-8 mt-8 border-t border-gray-700">
-                <h3 className="text-lg font-medium text-gray-200 mb-4">Office Hours</h3>
-                <ul className="space-y-2 text-gray-400">
-                  <li className="flex justify-between">
-                    <span>Monday - Friday</span>
-                    <span>9:00 AM - 6:00 PM</span>
-                  </li>
-                  <li className="flex justify-between">
-                    <span>Saturday</span>
-                    <span>10:00 AM - 4:00 PM</span>
-                  </li>
-                  <li className="flex justify-between">
-                    <span>Sunday</span>
-                    <span>Closed</span>
-                  </li>
-                </ul>
-              </div>
+
             </motion.div>
           </div>
         </div>
@@ -329,17 +303,14 @@ export default function Contact() {
               Bridgemohan Technologies
             </Link>
             <p className="text-gray-400 max-w-md mx-auto mb-8">
-              Creating exceptional digital experiences through innovative design and cutting-edge technology.
+              Professional IT Software Consulting Services to accelerate your digital transformation.
             </p>
             <div className="flex justify-center space-x-6 mb-8">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <AiFillLinkedin className="text-xl" />
+              <a href="mailto:nbridgemohan@gmail.com" className="text-gray-400 hover:text-blue-400 transition-colors">
+                <AiOutlineMail className="text-xl" />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <AiOutlineTwitter className="text-xl" />
-              </a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <AiFillGithub className="text-xl" />
+              <a href="tel:18682793914" className="text-gray-400 hover:text-blue-400 transition-colors">
+                <BsPhone className="text-xl" />
               </a>
             </div>
             <div className="text-sm text-gray-500">
