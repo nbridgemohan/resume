@@ -117,7 +117,7 @@ export default function Contact() {
                 Get In Touch
               </span>
             </h1>
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 dark:text-gray-300 max-w-2xl mx-auto">
               Ready to discuss your IT consulting needs? Let&apos;s explore how we can help transform your business through technology.
             </p>
           </motion.div>
@@ -129,9 +129,9 @@ export default function Contact() {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-gray-800/50 backdrop-blur-sm p-8 rounded-xl border border-gray-700"
+              className="bg-white/80 dark:bg-gray-800/50 backdrop-blur-sm p-8 rounded-xl border border-slate-200 dark:border-gray-700 shadow-lg dark:shadow-none"
             >
-              <h2 className="text-2xl font-semibold mb-6">Send us a message</h2>
+              <h2 className="text-2xl font-semibold mb-6 text-slate-800 dark:text-white">Send us a message</h2>
               
               {submitSuccess && (
                 <div className="mb-6 p-4 bg-green-500/20 border border-green-500 rounded-md">
@@ -147,7 +147,7 @@ export default function Contact() {
               
               <form onSubmit={handleSubmit}>
                 <div className="mb-4">
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
+                  <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1">
                     Your Name *
                   </label>
                   <input
@@ -157,13 +157,13 @@ export default function Contact() {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 bg-gray-900/50 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2 bg-slate-50 dark:bg-gray-900/50 border border-slate-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white"
                     placeholder="John Doe"
                   />
                 </div>
                 
                 <div className="mb-4">
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
+                  <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1">
                     Email Address *
                   </label>
                   <input
@@ -173,14 +173,14 @@ export default function Contact() {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 bg-gray-900/50 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2 bg-slate-50 dark:bg-gray-900/50 border border-slate-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white"
                     placeholder="john@example.com"
                   />
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                   <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-1">
+                    <label htmlFor="company" className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1">
                       Company
                     </label>
                     <input
@@ -189,12 +189,12 @@ export default function Contact() {
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 bg-gray-900/50 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-4 py-2 bg-slate-50 dark:bg-gray-900/50 border border-slate-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white"
                       placeholder="Your Company"
                     />
                   </div>
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-1">
+                    <label htmlFor="phone" className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1">
                       Phone Number
                     </label>
                     <input
@@ -203,14 +203,14 @@ export default function Contact() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 bg-gray-900/50 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-4 py-2 bg-slate-50 dark:bg-gray-900/50 border border-slate-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white"
                       placeholder="+1 (123) 456-7890"
                     />
                   </div>
                 </div>
                 
                 <div className="mb-6">
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
+                  <label htmlFor="message" className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1">
                     Your Message *
                   </label>
                   <textarea
@@ -220,7 +220,7 @@ export default function Contact() {
                     rows={5}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 bg-gray-900/50 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                    className="w-full px-4 py-2 bg-slate-50 dark:bg-gray-900/50 border border-slate-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none text-slate-900 dark:text-white"
                     placeholder="Tell us about your IT consulting needs and how we can help transform your business..."
                   ></textarea>
                 </div>
@@ -244,8 +244,8 @@ export default function Contact() {
               className="space-y-8"
             >
               <div>
-                <h2 className="text-2xl font-semibold mb-6">Contact Information</h2>
-                <p className="text-gray-300 mb-8">
+                <h2 className="text-2xl font-semibold mb-6 text-slate-800 dark:text-white">Contact Information</h2>
+                <p className="text-slate-600 dark:text-gray-300 mb-8">
                   Ready to discuss your IT consulting needs? Reach out to us directly to explore how we can help transform your business.
                 </p>
               </div>
@@ -253,12 +253,12 @@ export default function Contact() {
               <div className="space-y-4">
                 <div className="flex items-start space-x-4">
                   <div className="bg-blue-500/20 p-3 rounded-full">
-                    <BsEnvelope className="text-blue-400 text-xl" />
+                    <BsEnvelope className="text-blue-600 dark:text-blue-400 text-xl" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium text-gray-200">Email</h3>
-                    <p className="text-gray-400">
-                      <a href="mailto:nbridgemohan@gmail.com" className="hover:text-blue-400 transition-colors">
+                    <h3 className="text-lg font-medium text-slate-800 dark:text-gray-200">Email</h3>
+                    <p className="text-slate-600 dark:text-gray-400">
+                      <a href="mailto:nbridgemohan@gmail.com" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                         nbridgemohan@gmail.com
                       </a>
                     </p>
@@ -267,12 +267,12 @@ export default function Contact() {
                 
                 <div className="flex items-start space-x-4">
                   <div className="bg-purple-500/20 p-3 rounded-full">
-                    <BsPhone className="text-purple-400 text-xl" />
+                    <BsPhone className="text-purple-600 dark:text-purple-400 text-xl" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium text-gray-200">Phone</h3>
-                    <p className="text-gray-400">
-                      <a href="tel:18682793914" className="hover:text-purple-400 transition-colors">
+                    <h3 className="text-lg font-medium text-slate-800 dark:text-gray-200">Phone</h3>
+                    <p className="text-slate-600 dark:text-gray-400">
+                      <a href="tel:18682793914" className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
                         (868) 279-3914
                       </a>
                     </p>
@@ -281,9 +281,9 @@ export default function Contact() {
                 
               </div>
               
-              <div className="pt-8 border-t border-gray-700">
-                <h3 className="text-lg font-medium text-gray-200 mb-4">Business Hours</h3>
-                <p className="text-gray-400">
+              <div className="pt-8 border-t border-slate-200 dark:border-gray-700">
+                <h3 className="text-lg font-medium text-slate-800 dark:text-gray-200 mb-4">Business Hours</h3>
+                <p className="text-slate-600 dark:text-gray-400">
                   We&apos;re available for consultations and support during business hours. 
                   For urgent matters, please call or email us directly.
                 </p>
