@@ -106,7 +106,7 @@ export default function Home() {
             <motion.a
               href="#process"
               whileHover={{ scale: 1.02 }}
-              className="inline-flex items-center px-10 py-4 rounded-full border-2 border-white/20 text-white font-semibold text-lg hover:bg-white/10 transition-all duration-300 backdrop-blur-sm"
+              className="inline-flex items-center px-10 py-4 rounded-full border-2 border-slate-300 dark:border-white/20 text-slate-700 dark:text-white font-semibold text-lg hover:bg-slate-100/50 dark:hover:bg-white/10 transition-all duration-300 backdrop-blur-sm"
             >
               View Our Process
               <BsArrowRight className="ml-3" />
@@ -405,7 +405,7 @@ export default function Home() {
                 <motion.a
                   href="tel:18682793914"
                   whileHover={{ scale: 1.02 }}
-                  className="inline-flex items-center px-10 py-4 rounded-full border-2 border-white/20 text-white font-semibold text-lg hover:bg-white/10 transition-all duration-300 backdrop-blur-sm"
+                  className="inline-flex items-center px-10 py-4 rounded-full border-2 border-slate-300 dark:border-white/20 text-slate-700 dark:text-white font-semibold text-lg hover:bg-slate-100/50 dark:hover:bg-white/10 transition-all duration-300 backdrop-blur-sm"
                 >
                   Call Now: (868) 279-3914
                   <FaPhoneAlt className="ml-3" />
