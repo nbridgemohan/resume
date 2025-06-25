@@ -5,6 +5,7 @@ import { BsArrowRight, BsEnvelope, BsPhone } from "react-icons/bs";
 import { AiOutlineMail, AiFillLinkedin, AiFillGithub, AiOutlineTwitter, AiOutlineInstagram } from "react-icons/ai";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import Link from "next/link";
+import { ThemeSwitcher } from "../components/ThemeSwitcher";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -66,9 +67,9 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-gray-50 dark:from-gray-900 dark:to-black text-slate-900 dark:text-white overflow-hidden transition-colors duration-300">
       <Head>
-        <title>Contact Us | Bridgemohan Technologies</title>
+        <title>Contact Us | Bridgemohan Technologies Consulting</title>
         <meta name="description" content="Get in touch with our IT software consulting team" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -84,19 +85,18 @@ export default function Contact() {
       </div>
 
       {/* Navigation */}
-      <nav className="fixed w-full bg-black/50 backdrop-blur-md z-50">
+      <nav className="fixed w-full bg-white/60 dark:bg-black/50 backdrop-blur-md z-50 border-b border-slate-200/20 dark:border-gray-700/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex-shrink-0">
-              <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
-                Bridgemohan Technologies
+              <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:to-purple-500 text-transparent bg-clip-text">
+                Bridgemohan Technologies Consulting
               </Link>
             </div>
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                <Link href="/#services" className="hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">Services</Link>
-                <Link href="/contact" className="text-blue-400 px-3 py-2 rounded-md text-sm font-medium">Contact</Link>
-              </div>
+            <div className="hidden md:flex items-center space-x-4">
+              <Link href="/#services" className="text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">Services</Link>
+              <Link href="/contact" className="text-blue-600 dark:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">Contact</Link>
+              <ThemeSwitcher />
             </div>
           </div>
         </div>
@@ -300,7 +300,7 @@ export default function Contact() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text inline-block mb-6">
-              Bridgemohan Technologies
+              Bridgemohan Technologies Consulting
             </Link>
             <p className="text-gray-400 max-w-md mx-auto mb-8">
               Professional IT Software Consulting Services to accelerate your digital transformation.
@@ -314,7 +314,7 @@ export default function Contact() {
               </a>
             </div>
             <div className="text-sm text-gray-500">
-              &copy; {new Date().getFullYear()} Bridgemohan Technologies. All rights reserved.
+              &copy; {new Date().getFullYear()} Bridgemohan Technologies Consulting. All rights reserved.
             </div>
           </div>
         </div>
