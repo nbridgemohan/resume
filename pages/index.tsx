@@ -320,7 +320,7 @@ export default function Home() {
               Your Technology Partner for Success
             </h2>
             <p className="text-xl text-slate-700 dark:text-slate-400 max-w-4xl mx-auto font-light leading-relaxed">
-              Bridgemohan Technologies Consulting combines deep technical expertise with business acumen to deliver solutions that don't just meet requirements—they exceed expectations and drive measurable business growth.
+              Bridgemohan Technologies Consulting combines deep technical expertise with business acumen to deliver solutions that don&apos;t just meet requirements—they exceed expectations and drive measurable business growth.
             </p>
           </motion.div>
 
@@ -383,11 +383,11 @@ export default function Home() {
               </span>
               
               <h2 className="text-4xl md:text-5xl font-black mb-6 bg-gradient-to-r from-slate-800 via-blue-800 to-indigo-900 dark:from-white dark:to-slate-300 text-transparent bg-clip-text">
-                Let's Build the Future Together
+                Let&apos;s Build the Future Together
               </h2>
               
               <p className="text-xl text-slate-700 dark:text-slate-400 mb-10 max-w-3xl mx-auto leading-relaxed">
-                Don't let technology limitations hold your business back. Schedule a free consultation and discover how we can accelerate your digital transformation.
+                Don&apos;t let technology limitations hold your business back. Schedule a free consultation and discover how we can accelerate your digital transformation.
               </p>
               
               <div className="flex flex-col lg:flex-row gap-6 justify-center items-center mb-12">
