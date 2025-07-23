@@ -69,8 +69,8 @@ export default function Contact() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-gray-50 dark:from-gray-900 dark:to-black text-slate-900 dark:text-white overflow-hidden transition-colors duration-300">
       <Head>
-        <title>Contact Us | Bridgemohan Technologies Consulting</title>
-        <meta name="description" content="Get in touch with our IT software consulting team" />
+        <title>Contact Us | Bridgemohan Technologies | HR & Payroll Software Solutions</title>
+        <meta name="description" content="Get in touch with our HR & Payroll software and Inventory Management specialists" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -90,7 +90,7 @@ export default function Contact() {
           <div className="flex items-center justify-between h-16">
             <div className="flex-shrink-0">
               <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:to-purple-500 text-transparent bg-clip-text">
-                Bridgemohan Technologies Consulting
+                Bridgemohan Technologies
               </Link>
             </div>
             <div className="hidden md:flex items-center space-x-4">
@@ -118,7 +118,7 @@ export default function Contact() {
               </span>
             </h1>
             <p className="text-lg text-slate-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Ready to discuss your IT consulting needs? Let&apos;s explore how we can help transform your business through technology.
+              Ready to discuss your HR & Payroll or Inventory Management software needs? Let&apos;s explore how we can help streamline your business operations.
             </p>
           </motion.div>
 
@@ -221,7 +221,7 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     className="w-full px-4 py-2 bg-slate-50 dark:bg-gray-900/50 border border-slate-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none text-slate-900 dark:text-white"
-                    placeholder="Tell us about your IT consulting needs and how we can help transform your business..."
+                    placeholder="Tell us about your HR & Payroll or Inventory Management software needs and how we can help streamline your operations..."
                   ></textarea>
                 </div>
                 
@@ -246,7 +246,7 @@ export default function Contact() {
               <div>
                 <h2 className="text-2xl font-semibold mb-6 text-slate-800 dark:text-white">Contact Information</h2>
                 <p className="text-slate-600 dark:text-gray-300 mb-8">
-                  Ready to discuss your IT consulting needs? Reach out to us directly to explore how we can help transform your business.
+                  Ready to discuss your HR & Payroll or Inventory Management software needs? Reach out to us directly to explore how we can help streamline your operations.
                 </p>
               </div>
               

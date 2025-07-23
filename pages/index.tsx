@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { BsArrowRight, BsCodeSlash, BsGear, BsCloud, BsPeople, BsCheck, BsStar, BsAward, BsGraphUp, BsLightbulb, BsTrophy, BsRocket, BsSun, BsMoon } from "react-icons/bs";
+import { BsArrowRight, BsCodeSlash, BsGear, BsCloud, BsPeople, BsBox, BsCheck, BsStar, BsAward, BsGraphUp, BsLightbulb, BsTrophy, BsRocket, BsSun, BsMoon } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 import { FaPhoneAlt } from "react-icons/fa";
 import Image from "next/image";
@@ -25,8 +25,8 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-gray-50 dark:from-slate-900 dark:via-gray-900 dark:to-black text-slate-900 dark:text-white font-['Inter',_sans-serif] transition-colors duration-300">
       <Head>
-        <title>Bridgemohan Technologies Consulting | Elite IT Software Consulting & Digital Transformation</title>
-        <meta name="description" content="Premier IT software consulting firm specializing in custom development, cloud solutions, and enterprise digital transformation." />
+        <title>Bridgemohan Technologies | HR & Payroll Software Solutions | Inventory Management Systems</title>
+        <meta name="description" content="Leading software provider specializing in HR & Payroll solutions, Inventory Management systems, and custom software development for modern businesses." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
 
@@ -45,7 +45,7 @@ export default function Home() {
           <div className="flex items-center justify-between h-20">
             <div className="flex-shrink-0">
               <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-500 text-transparent bg-clip-text hover:from-blue-500 hover:via-indigo-500 hover:to-purple-500 dark:hover:from-blue-300 dark:hover:to-purple-400 transition-all duration-300">
-                Bridgemohan Technologies Consulting
+                Bridgemohan Technologies
               </Link>
             </div>
             <div className="hidden md:flex items-center space-x-8">
@@ -74,21 +74,21 @@ export default function Home() {
             className="mb-6"
           >
             <span className="inline-block px-4 py-2 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-600 dark:text-blue-300 text-sm font-semibold mb-6">
-              💼 Professional Software Consulting
+              💼 HR, Payroll & Inventory Management Solutions
             </span>
           </motion.div>
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-tight tracking-tight">
             <span className="bg-gradient-to-r from-slate-800 via-slate-700 to-slate-600 dark:from-white dark:via-blue-100 dark:to-indigo-200 text-transparent bg-clip-text block mb-2">
-              Enterprise-Grade
+              HR & Payroll
             </span>
             <span className="bg-gradient-to-r from-blue-600 via-indigo-700 to-purple-800 dark:from-blue-400 dark:via-indigo-500 dark:to-purple-600 text-transparent bg-clip-text">
-              Software Consulting
+              Software Solutions
             </span>
           </h1>
           
           <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
-            Let us help you with tailor made solutions to see your business thrive. We architect, develop, and deploy scalable software that drives measurable results and accelerates growth.
+            Let us help you with tailor made solutions to see your business thrive. Specializing in HR & Payroll management, Inventory tracking systems, and custom software development to streamline your operations and boost productivity.
           </p>
           
           <div className="flex flex-col lg:flex-row gap-6 justify-center items-center mb-16">
@@ -176,10 +176,10 @@ export default function Home() {
               💼 Our Expertise
             </span>
             <h2 className="text-4xl md:text-6xl font-black mb-6 bg-gradient-to-r from-slate-800 via-blue-800 to-indigo-900 dark:from-white dark:to-slate-300 text-transparent bg-clip-text">
-              Comprehensive Technology Solutions
+              Specialized Business Software Solutions
             </h2>
             <p className="text-xl text-slate-700 dark:text-slate-400 max-w-4xl mx-auto font-light leading-relaxed">
-              From strategic consulting to full-scale implementation, we deliver end-to-end technology solutions that position your business for sustainable growth and competitive advantage.
+              From HR management to inventory tracking, we deliver specialized software solutions that streamline your business operations and enhance productivity.
             </p>
           </motion.div>
           
@@ -190,15 +190,15 @@ export default function Home() {
               className="p-8 rounded-2xl bg-gradient-to-br from-white to-blue-50 dark:from-gray-800/60 dark:to-gray-900/60 backdrop-blur-sm border border-blue-200/50 dark:border-gray-600/30 hover:border-blue-400/70 dark:hover:border-blue-400/50 shadow-lg dark:shadow-none group"
             >
               <div className="p-4 rounded-2xl bg-blue-100 dark:bg-blue-500/20 border border-blue-300 dark:border-blue-400/30 w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <BsCodeSlash className="text-2xl text-blue-700 dark:text-blue-400" />
+                <BsPeople className="text-2xl text-blue-700 dark:text-blue-400" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">Custom Software Development</h3>
-              <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Enterprise-grade applications built with cutting-edge technologies, scalable architectures, and industry best practices.</p>
+              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">HR & Payroll Management</h3>
+              <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Comprehensive HR software solutions to manage your workforce, streamline payroll processing, and ensure compliance.</p>
               <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-3 mb-6">
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Full-Stack Web Applications</li>
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Cross-Platform Mobile Apps</li>
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />RESTful & GraphQL APIs</li>
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Microservices Architecture</li>
+                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Employee Management System</li>
+                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Automated Payroll Processing</li>
+                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Time & Attendance Tracking</li>
+                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Benefits Administration</li>
               </ul>
               <Link href="/contact" className="inline-flex items-center text-blue-700 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 font-semibold group-hover:translate-x-2 transition-all duration-300">
                 Learn More <BsArrowRight className="ml-2" />
@@ -211,15 +211,15 @@ export default function Home() {
               className="p-8 rounded-2xl bg-gradient-to-br from-white to-purple-50 dark:from-gray-800/60 dark:to-gray-900/60 backdrop-blur-sm border border-purple-200/50 dark:border-gray-600/30 hover:border-purple-400/70 dark:hover:border-purple-400/50 shadow-lg dark:shadow-none group"
             >
               <div className="p-4 rounded-2xl bg-purple-100 dark:bg-purple-500/20 border border-purple-300 dark:border-purple-400/30 w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <BsCloud className="text-2xl text-purple-700 dark:text-purple-400" />
+                <BsBox className="text-2xl text-purple-700 dark:text-purple-400" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">Cloud Infrastructure & DevOps</h3>
-              <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Scalable cloud solutions with automated deployment pipelines, monitoring, and optimization for maximum efficiency.</p>
+              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">Inventory Management Systems</h3>
+              <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Advanced inventory tracking solutions with real-time monitoring, automated reordering, and comprehensive reporting.</p>
               <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-3 mb-6">
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />AWS/Azure/GCP Migration</li>
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Kubernetes Orchestration</li>
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />CI/CD Pipeline Setup</li>
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Infrastructure as Code</li>
+                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Real-time Stock Tracking</li>
+                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Automated Reorder Management</li>
+                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Barcode/QR Code Integration</li>
+                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Multi-location Support</li>
               </ul>
               <Link href="/contact" className="inline-flex items-center text-purple-700 dark:text-purple-400 hover:text-purple-600 dark:hover:text-purple-300 font-semibold group-hover:translate-x-2 transition-all duration-300">
                 Learn More <BsArrowRight className="ml-2" />
@@ -232,15 +232,15 @@ export default function Home() {
               className="p-8 rounded-2xl bg-gradient-to-br from-white to-green-50 dark:from-gray-800/60 dark:to-gray-900/60 backdrop-blur-sm border border-green-200/50 dark:border-gray-600/30 hover:border-green-400/70 dark:hover:border-green-400/50 shadow-lg dark:shadow-none group"
             >
               <div className="p-4 rounded-2xl bg-green-100 dark:bg-green-500/20 border border-green-300 dark:border-green-400/30 w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <BsGear className="text-2xl text-green-700 dark:text-green-400" />
+                <BsCodeSlash className="text-2xl text-green-700 dark:text-green-400" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">Digital Transformation</h3>
-              <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Complete business process optimization through technology integration and legacy system modernization.</p>
+              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">Custom Software Development</h3>
+              <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Tailored software solutions designed specifically for your business needs, from web applications to mobile apps.</p>
               <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-3 mb-6">
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Legacy System Modernization</li>
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Process Automation</li>
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Data Analytics & BI</li>
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />AI/ML Integration</li>
+                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Web Application Development</li>
+                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Mobile App Development</li>
+                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Database Design & Integration</li>
+                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />API Development & Integration</li>
               </ul>
               <Link href="/contact" className="inline-flex items-center text-green-700 dark:text-green-400 hover:text-green-600 dark:hover:text-green-300 font-semibold group-hover:translate-x-2 transition-all duration-300">
                 Learn More <BsArrowRight className="ml-2" />
@@ -317,10 +317,10 @@ export default function Home() {
               🏆 Why Choose Us
             </span>
             <h2 className="text-4xl md:text-6xl font-black mb-6 bg-gradient-to-r from-slate-800 via-blue-800 to-indigo-900 dark:from-white dark:to-slate-300 text-transparent bg-clip-text">
-              Your Technology Partner for Success
+              Your Specialized Software Partner
             </h2>
             <p className="text-xl text-slate-700 dark:text-slate-400 max-w-4xl mx-auto font-light leading-relaxed">
-              Bridgemohan Technologies Consulting combines deep technical expertise with business acumen to deliver solutions that don&apos;t just meet requirements—they exceed expectations and drive measurable business growth.
+              Bridgemohan Technologies specializes in developing comprehensive HR & Payroll systems, advanced Inventory Management solutions, and custom business software that streamlines operations and drives productivity.
             </p>
           </motion.div>
 
@@ -335,7 +335,7 @@ export default function Home() {
                 <BsAward className="text-3xl text-blue-400" />
               </div>
               <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">10+ Years of Excellence</h3>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">Proven expertise in delivering complex enterprise solutions across various industries and modern technology stacks.</p>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">Proven expertise in developing HR & Payroll systems and Inventory Management solutions for businesses of all sizes.</p>
             </motion.div>
 
             <motion.div
@@ -347,8 +347,8 @@ export default function Home() {
               <div className="w-24 h-24 bg-gradient-to-br from-purple-500/20 to-indigo-600/20 border border-purple-400/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                 <BsPeople className="text-3xl text-purple-400" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">Client-Centric Approach</h3>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">Every solution is tailored to your unique business needs, ensuring maximum ROI and long-term success.</p>
+              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">Business-Focused Solutions</h3>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">We understand the complexities of HR management and inventory tracking, delivering solutions that fit your workflow perfectly.</p>
             </motion.div>
 
             <motion.div
@@ -360,8 +360,8 @@ export default function Home() {
               <div className="w-24 h-24 bg-gradient-to-br from-green-500/20 to-emerald-600/20 border border-green-400/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                 <BsGraphUp className="text-3xl text-green-400" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">Measurable Results</h3>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">We deliver solutions that drive real business outcomes—increased efficiency, reduced costs, and accelerated growth.</p>
+              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">Streamlined Operations</h3>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">Our software solutions automate manual processes, reduce errors, and provide real-time insights to boost your business efficiency.</p>
             </motion.div>
           </div>
         </div>
@@ -465,7 +465,7 @@ export default function Home() {
             </div>
             
             <div className="text-slate-600 dark:text-slate-500 text-sm">
-              &copy; {new Date().getFullYear()} Bridgemohan Technologies Consulting. All rights reserved. | Transforming businesses through technology excellence.
+              &copy; {new Date().getFullYear()} Bridgemohan Technologies. All rights reserved. | Streamlining businesses through specialized software solutions.
             </div>
           </div>
         </div>
