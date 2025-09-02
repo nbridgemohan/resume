@@ -16,7 +16,6 @@ Bridgemohan Technologies provides comprehensive IT software consulting services 
 ## Contact Information
 
 - **Email**: nbridgemohan@gmail.com
-- **Phone**: (868) 279-3914
 
 ## Environment Setup
 

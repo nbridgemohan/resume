@@ -265,19 +265,6 @@ export default function Contact() {
                   </div>
                 </div>
                 
-                <div className="flex items-start space-x-4">
-                  <div className="bg-purple-500/20 p-3 rounded-full">
-                    <BsPhone className="text-purple-600 dark:text-purple-400 text-xl" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-medium text-slate-800 dark:text-gray-200">Phone</h3>
-                    <p className="text-slate-600 dark:text-gray-400">
-                      <a href="tel:18682793914" className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
-                        (868) 279-3914
-                      </a>
-                    </p>
-                  </div>
-                </div>
                 
               </div>
               
@@ -308,9 +295,6 @@ export default function Contact() {
             <div className="flex justify-center space-x-6 mb-8">
               <a href="mailto:nbridgemohan@gmail.com" className="text-gray-400 hover:text-blue-400 transition-colors">
                 <AiOutlineMail className="text-xl" />
-              </a>
-              <a href="tel:18682793914" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <BsPhone className="text-xl" />
               </a>
             </div>
             <div className="text-sm text-gray-500">

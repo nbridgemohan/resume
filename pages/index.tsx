@@ -126,16 +126,6 @@ export default function Home() {
               <span className="font-medium">nbridgemohan@gmail.com</span>
             </motion.a>
             
-            <motion.a
-              href="tel:18682793914"
-              whileHover={{ scale: 1.05 }}
-              className="flex items-center group transition-all duration-300 hover:text-indigo-600 dark:hover:text-indigo-400"
-            >
-              <div className="p-3 rounded-full bg-indigo-500/20 border border-indigo-400/30 mr-3 group-hover:bg-indigo-500/30 transition-all duration-300">
-                <FaPhoneAlt className="text-indigo-600 dark:text-indigo-400" />
-              </div>
-              <span className="font-medium">(868) 279-3914</span>
-            </motion.a>
           </div>
         </motion.div>
       </section>
@@ -402,14 +392,6 @@ export default function Home() {
                   </motion.a>
                 </Link>
                 
-                <motion.a
-                  href="tel:18682793914"
-                  whileHover={{ scale: 1.02 }}
-                  className="inline-flex items-center px-10 py-4 rounded-full border-2 border-slate-300 dark:border-white/20 text-slate-700 dark:text-white font-semibold text-lg hover:bg-slate-100/50 dark:hover:bg-white/10 transition-all duration-300 backdrop-blur-sm"
-                >
-                  Call Now: (868) 279-3914
-                  <FaPhoneAlt className="ml-3" />
-                </motion.a>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
@@ -417,12 +399,6 @@ export default function Home() {
                   <AiOutlineMail className="text-blue-600 dark:text-blue-400 mr-3 text-xl" />
                   <a href="mailto:nbridgemohan@gmail.com" className="text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium">
                     nbridgemohan@gmail.com
-                  </a>
-                </div>
-                <div className="flex items-center justify-center">
-                  <FaPhoneAlt className="text-indigo-600 dark:text-indigo-400 mr-3 text-xl" />
-                  <a href="tel:18682793914" className="text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors font-medium">
-                    (868) 279-3914
                   </a>
                 </div>
                 <div className="flex items-center justify-center">
@@ -454,13 +430,6 @@ export default function Home() {
                 className="p-4 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-400 hover:bg-blue-500/30 transition-all duration-300"
               >
                 <AiOutlineMail className="text-2xl" />
-              </motion.a>
-              <motion.a
-                href="tel:18682793914"
-                whileHover={{ scale: 1.1, y: -2 }}
-                className="p-4 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-400 hover:bg-indigo-500/30 transition-all duration-300"
-              >
-                <FaPhoneAlt className="text-2xl" />
               </motion.a>
             </div>
             
