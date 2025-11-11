@@ -67,23 +67,12 @@ export default function Home() {
           transition={{ duration: 1, ease: "easeOut" }}
           className="text-center z-10 max-w-6xl mx-auto"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-6"
-          >
-            <span className="inline-block px-4 py-2 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-600 dark:text-blue-300 text-sm font-semibold mb-6">
-              💼 Web Design, HR, Payroll & Software Solutions
-            </span>
-          </motion.div>
-          
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-tight tracking-tight">
             <span className="bg-gradient-to-r from-slate-800 via-slate-700 to-slate-600 dark:from-white dark:via-blue-100 dark:to-indigo-200 text-transparent bg-clip-text block mb-2">
-              Web Design & Development
+              Web Design
             </span>
             <span className="bg-gradient-to-r from-blue-600 via-indigo-700 to-purple-800 dark:from-blue-400 dark:via-indigo-500 dark:to-purple-600 text-transparent bg-clip-text">
-              Software Solutions
+              & Software Solutions
             </span>
           </h1>
 
@@ -201,38 +190,17 @@ export default function Home() {
               className="p-8 rounded-2xl bg-gradient-to-br from-white to-blue-50 dark:from-gray-800/60 dark:to-gray-900/60 backdrop-blur-sm border border-blue-200/50 dark:border-gray-600/30 hover:border-blue-400/70 dark:hover:border-blue-400/50 shadow-lg dark:shadow-none group"
             >
               <div className="p-4 rounded-2xl bg-blue-100 dark:bg-blue-500/20 border border-blue-300 dark:border-blue-400/30 w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <BsPeople className="text-2xl text-blue-700 dark:text-blue-400" />
+                <BsGear className="text-2xl text-blue-700 dark:text-blue-400" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">HR & Payroll Web Applications</h3>
-              <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Cloud-based HR and Payroll web applications to manage your workforce, streamline payroll processing, and ensure compliance from anywhere.</p>
+              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">Business Software Applications</h3>
+              <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Cloud-based web and mobile applications for HR, Payroll, and Inventory Management to streamline your business operations.</p>
               <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-3 mb-6">
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Employee Management System</li>
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Automated Payroll Processing</li>
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Time & Attendance Tracking</li>
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Benefits Administration</li>
+                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />HR & Payroll Management</li>
+                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Inventory Tracking Systems</li>
+                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Employee & Time Management</li>
+                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Real-time Reporting & Analytics</li>
               </ul>
               <Link href="/contact" className="inline-flex items-center text-blue-700 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 font-semibold group-hover:translate-x-2 transition-all duration-300">
-                Learn More <BsArrowRight className="ml-2" />
-              </Link>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ y: -10, scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-              className="p-8 rounded-2xl bg-gradient-to-br from-white to-purple-50 dark:from-gray-800/60 dark:to-gray-900/60 backdrop-blur-sm border border-purple-200/50 dark:border-gray-600/30 hover:border-purple-400/70 dark:hover:border-purple-400/50 shadow-lg dark:shadow-none group"
-            >
-              <div className="p-4 rounded-2xl bg-purple-100 dark:bg-purple-500/20 border border-purple-300 dark:border-purple-400/30 w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <BsBox className="text-2xl text-purple-700 dark:text-purple-400" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">Inventory Management Apps</h3>
-              <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Advanced web and mobile inventory tracking applications with real-time monitoring, automated reordering, and comprehensive reporting.</p>
-              <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-3 mb-6">
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Real-time Stock Tracking</li>
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Automated Reorder Management</li>
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Barcode/QR Code Integration</li>
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Multi-location Support</li>
-              </ul>
-              <Link href="/contact" className="inline-flex items-center text-purple-700 dark:text-purple-400 hover:text-purple-600 dark:hover:text-purple-300 font-semibold group-hover:translate-x-2 transition-all duration-300">
                 Learn More <BsArrowRight className="ml-2" />
               </Link>
             </motion.div>
@@ -423,8 +391,8 @@ export default function Home() {
                   </a>
                 </div>
                 <div className="flex items-center justify-center">
-                  <BsLightbulb className="text-green-600 dark:text-green-400 mr-3 text-xl" />
-                  <span className="text-slate-700 dark:text-slate-300 font-medium">Innovation-Driven Approach</span>
+                  <BsRocket className="text-purple-600 dark:text-purple-400 mr-3 text-xl" />
+                  <span className="text-slate-700 dark:text-slate-300 font-medium">Fast & Reliable Delivery</span>
                 </div>
               </div>
             </div>
