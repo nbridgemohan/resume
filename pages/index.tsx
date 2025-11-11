@@ -410,7 +410,7 @@ export default function Home() {
             </div>
             
             <div className="text-slate-600 dark:text-slate-500 text-sm">
-              &copy; {new Date().getFullYear()} Bridgemohan Technologies. All rights reserved. | Streamlining businesses through specialized software solutions.
+              &copy; {new Date().getFullYear()} Bridgemohan Technologies. All rights reserved.
             </div>
           </div>
         </div>
