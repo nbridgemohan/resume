@@ -67,7 +67,7 @@ export default function Home() {
           transition={{ duration: 1, ease: "easeOut" }}
           className="text-center z-10 max-w-6xl mx-auto"
         >
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-tight tracking-tight">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-8 leading-snug tracking-tight">
             <span className="bg-gradient-to-r from-slate-800 via-slate-700 to-slate-600 dark:from-white dark:via-blue-100 dark:to-indigo-200 text-transparent bg-clip-text block mb-2">
               Web Design
             </span>
@@ -381,19 +381,6 @@ export default function Home() {
                   </motion.a>
                 </Link>
                 
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                <div className="flex items-center justify-center">
-                  <AiOutlineMail className="text-blue-600 dark:text-blue-400 mr-3 text-xl" />
-                  <a href="mailto:nbridgemohan@gmail.com" className="text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium">
-                    nbridgemohan@gmail.com
-                  </a>
-                </div>
-                <div className="flex items-center justify-center">
-                  <BsRocket className="text-purple-600 dark:text-purple-400 mr-3 text-xl" />
-                  <span className="text-slate-700 dark:text-slate-300 font-medium">Fast & Reliable Delivery</span>
-                </div>
               </div>
             </div>
           </motion.div>
