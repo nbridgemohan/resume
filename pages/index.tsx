@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { BsArrowRight, BsCodeSlash, BsGear, BsCloud, BsPeople, BsBox, BsCheck, BsStar, BsAward, BsGraphUp, BsLightbulb, BsTrophy, BsRocket, BsSun, BsMoon } from "react-icons/bs";
+import { BsArrowRight, BsCodeSlash, BsGear, BsCloud, BsPeople, BsBox, BsCheck, BsStar, BsAward, BsGraphUp, BsLightbulb, BsTrophy, BsRocket, BsSun, BsMoon, BsPalette, BsWindow } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 import { FaPhoneAlt } from "react-icons/fa";
 import Image from "next/image";
@@ -25,8 +25,8 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-gray-50 dark:from-slate-900 dark:via-gray-900 dark:to-black text-slate-900 dark:text-white font-['Inter',_sans-serif] transition-colors duration-300">
       <Head>
-        <title>Bridgemohan Technologies | HR & Payroll Software Solutions | Inventory Management Systems</title>
-        <meta name="description" content="Leading software provider specializing in HR & Payroll solutions, Inventory Management systems, and custom software development for modern businesses." />
+        <title>Bridgemohan Technologies | Web Design & Development | HR & Payroll Software Solutions</title>
+        <meta name="description" content="Professional web design & development, HR & Payroll solutions, Inventory Management systems, and custom software development for modern businesses." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
 
@@ -74,21 +74,21 @@ export default function Home() {
             className="mb-6"
           >
             <span className="inline-block px-4 py-2 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-600 dark:text-blue-300 text-sm font-semibold mb-6">
-              💼 HR, Payroll & Inventory Management Solutions
+              💼 Web Design, HR, Payroll & Software Solutions
             </span>
           </motion.div>
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-tight tracking-tight">
             <span className="bg-gradient-to-r from-slate-800 via-slate-700 to-slate-600 dark:from-white dark:via-blue-100 dark:to-indigo-200 text-transparent bg-clip-text block mb-2">
-              HR & Payroll
+              Web Design & Development
             </span>
             <span className="bg-gradient-to-r from-blue-600 via-indigo-700 to-purple-800 dark:from-blue-400 dark:via-indigo-500 dark:to-purple-600 text-transparent bg-clip-text">
               Software Solutions
             </span>
           </h1>
-          
+
           <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
-            Let us help you with tailor made solutions to see your business thrive. Specializing in HR & Payroll management, Inventory tracking systems, and custom software development to streamline your operations and boost productivity.
+            Let us help you with tailor made solutions to see your business thrive. Specializing in modern web design & development, HR & Payroll management, Inventory tracking systems, and custom software solutions to streamline your operations and boost productivity.
           </p>
           
           <div className="flex flex-col lg:flex-row gap-6 justify-center items-center mb-16">
@@ -166,14 +166,35 @@ export default function Home() {
               💼 Our Expertise
             </span>
             <h2 className="text-4xl md:text-6xl font-black mb-6 bg-gradient-to-r from-slate-800 via-blue-800 to-indigo-900 dark:from-white dark:to-slate-300 text-transparent bg-clip-text">
-              Specialized Business Software Solutions
+              Comprehensive Digital Solutions
             </h2>
             <p className="text-xl text-slate-700 dark:text-slate-400 max-w-4xl mx-auto font-light leading-relaxed">
-              From HR management to inventory tracking, we deliver specialized software solutions that streamline your business operations and enhance productivity.
+              From stunning web design to HR management and inventory tracking, we deliver comprehensive digital solutions that elevate your online presence and streamline your business operations.
             </p>
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <motion.div
+              whileHover={{ y: -10, scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+              className="p-8 rounded-2xl bg-gradient-to-br from-white to-indigo-50 dark:from-gray-800/60 dark:to-gray-900/60 backdrop-blur-sm border border-indigo-200/50 dark:border-gray-600/30 hover:border-indigo-400/70 dark:hover:border-indigo-400/50 shadow-lg dark:shadow-none group"
+            >
+              <div className="p-4 rounded-2xl bg-indigo-100 dark:bg-indigo-500/20 border border-indigo-300 dark:border-indigo-400/30 w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <BsPalette className="text-2xl text-indigo-700 dark:text-indigo-400" />
+              </div>
+              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">Web Design & Development</h3>
+              <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Modern, responsive websites and web applications that captivate your audience and drive business growth with stunning design and seamless functionality.</p>
+              <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-3 mb-6">
+                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Responsive Website Design</li>
+                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />E-Commerce Solutions</li>
+                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />UI/UX Design & Optimization</li>
+                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Content Management Systems</li>
+              </ul>
+              <Link href="/contact" className="inline-flex items-center text-indigo-700 dark:text-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-300 font-semibold group-hover:translate-x-2 transition-all duration-300">
+                Learn More <BsArrowRight className="ml-2" />
+              </Link>
+            </motion.div>
+
             <motion.div
               whileHover={{ y: -10, scale: 1.02 }}
               transition={{ duration: 0.3 }}
@@ -182,8 +203,8 @@ export default function Home() {
               <div className="p-4 rounded-2xl bg-blue-100 dark:bg-blue-500/20 border border-blue-300 dark:border-blue-400/30 w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <BsPeople className="text-2xl text-blue-700 dark:text-blue-400" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">HR & Payroll Management</h3>
-              <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Comprehensive HR software solutions to manage your workforce, streamline payroll processing, and ensure compliance.</p>
+              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">HR & Payroll Web Applications</h3>
+              <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Cloud-based HR and Payroll web applications to manage your workforce, streamline payroll processing, and ensure compliance from anywhere.</p>
               <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-3 mb-6">
                 <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Employee Management System</li>
                 <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Automated Payroll Processing</li>
@@ -203,8 +224,8 @@ export default function Home() {
               <div className="p-4 rounded-2xl bg-purple-100 dark:bg-purple-500/20 border border-purple-300 dark:border-purple-400/30 w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <BsBox className="text-2xl text-purple-700 dark:text-purple-400" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">Inventory Management Systems</h3>
-              <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Advanced inventory tracking solutions with real-time monitoring, automated reordering, and comprehensive reporting.</p>
+              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">Inventory Management Apps</h3>
+              <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Advanced web and mobile inventory tracking applications with real-time monitoring, automated reordering, and comprehensive reporting.</p>
               <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-3 mb-6">
                 <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Real-time Stock Tracking</li>
                 <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Automated Reorder Management</li>
@@ -224,13 +245,13 @@ export default function Home() {
               <div className="p-4 rounded-2xl bg-green-100 dark:bg-green-500/20 border border-green-300 dark:border-green-400/30 w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <BsCodeSlash className="text-2xl text-green-700 dark:text-green-400" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">Custom Software Development</h3>
-              <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Tailored software solutions designed specifically for your business needs, from web applications to mobile apps.</p>
+              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">Custom Software Solutions</h3>
+              <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Enterprise-grade web and mobile applications designed specifically for your business needs, including HR & Payroll systems and Inventory Management.</p>
               <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-3 mb-6">
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Web Application Development</li>
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Mobile App Development</li>
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Database Design & Integration</li>
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />API Development & Integration</li>
+                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Web & Mobile App Development</li>
+                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />HR & Payroll Web Applications</li>
+                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Inventory Management Apps</li>
+                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Cloud-Based Business Solutions</li>
               </ul>
               <Link href="/contact" className="inline-flex items-center text-green-700 dark:text-green-400 hover:text-green-600 dark:hover:text-green-300 font-semibold group-hover:translate-x-2 transition-all duration-300">
                 Learn More <BsArrowRight className="ml-2" />
@@ -307,10 +328,10 @@ export default function Home() {
               🏆 Why Choose Us
             </span>
             <h2 className="text-4xl md:text-6xl font-black mb-6 bg-gradient-to-r from-slate-800 via-blue-800 to-indigo-900 dark:from-white dark:to-slate-300 text-transparent bg-clip-text">
-              Your Specialized Software Partner
+              Your Digital Transformation Partner
             </h2>
             <p className="text-xl text-slate-700 dark:text-slate-400 max-w-4xl mx-auto font-light leading-relaxed">
-              Bridgemohan Technologies specializes in developing comprehensive HR & Payroll systems, advanced Inventory Management solutions, and custom business software that streamlines operations and drives productivity.
+              Bridgemohan Technologies specializes in modern web design, enterprise web applications, mobile apps, and cloud-based business software including HR & Payroll systems and Inventory Management solutions that streamline operations and drive productivity.
             </p>
           </motion.div>
 
@@ -325,7 +346,7 @@ export default function Home() {
                 <BsAward className="text-3xl text-blue-400" />
               </div>
               <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">10+ Years of Excellence</h3>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">Proven expertise in developing HR & Payroll systems and Inventory Management solutions for businesses of all sizes.</p>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">Proven expertise in web design, enterprise web applications, mobile apps, and cloud-based business solutions for companies of all sizes.</p>
             </motion.div>
 
             <motion.div
@@ -338,7 +359,7 @@ export default function Home() {
                 <BsPeople className="text-3xl text-purple-400" />
               </div>
               <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">Business-Focused Solutions</h3>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">We understand the complexities of HR management and inventory tracking, delivering solutions that fit your workflow perfectly.</p>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">From stunning websites to complex business applications, we understand your needs and deliver web and mobile solutions that fit your workflow perfectly.</p>
             </motion.div>
 
             <motion.div
@@ -350,8 +371,8 @@ export default function Home() {
               <div className="w-24 h-24 bg-gradient-to-br from-green-500/20 to-emerald-600/20 border border-green-400/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                 <BsGraphUp className="text-3xl text-green-400" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">Streamlined Operations</h3>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">Our software solutions automate manual processes, reduce errors, and provide real-time insights to boost your business efficiency.</p>
+              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">Modern Web & Mobile Solutions</h3>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">Our web and mobile applications automate manual processes, provide seamless user experiences, and deliver real-time insights to boost your business efficiency.</p>
             </motion.div>
           </div>
         </div>

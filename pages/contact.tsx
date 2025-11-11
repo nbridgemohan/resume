@@ -69,8 +69,8 @@ export default function Contact() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-gray-50 dark:from-gray-900 dark:to-black text-slate-900 dark:text-white overflow-hidden transition-colors duration-300">
       <Head>
-        <title>Contact Us | Bridgemohan Technologies | HR & Payroll Software Solutions</title>
-        <meta name="description" content="Get in touch with our HR & Payroll software and Inventory Management specialists" />
+        <title>Contact Us | Bridgemohan Technologies | Web Design & Software Solutions</title>
+        <meta name="description" content="Get in touch for web design, web development, mobile apps, HR & Payroll software, and Inventory Management solutions" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -118,7 +118,7 @@ export default function Contact() {
               </span>
             </h1>
             <p className="text-lg text-slate-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Ready to discuss your HR & Payroll or Inventory Management software needs? Let&apos;s explore how we can help streamline your business operations.
+              Ready to discuss your web design, mobile app, or business software needs? Let&apos;s explore how we can help transform your digital presence and streamline your operations.
             </p>
           </motion.div>
 
@@ -221,7 +221,7 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     className="w-full px-4 py-2 bg-slate-50 dark:bg-gray-900/50 border border-slate-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none text-slate-900 dark:text-white"
-                    placeholder="Tell us about your HR & Payroll or Inventory Management software needs and how we can help streamline your operations..."
+                    placeholder="Tell us about your web design, mobile app, or business software needs and how we can help transform your digital presence..."
                   ></textarea>
                 </div>
                 
@@ -246,7 +246,7 @@ export default function Contact() {
               <div>
                 <h2 className="text-2xl font-semibold mb-6 text-slate-800 dark:text-white">Contact Information</h2>
                 <p className="text-slate-600 dark:text-gray-300 mb-8">
-                  Ready to discuss your HR & Payroll or Inventory Management software needs? Reach out to us directly to explore how we can help streamline your operations.
+                  Ready to discuss your web design, mobile app development, or business software needs? Reach out to us directly to explore how we can help elevate your digital presence and streamline your operations.
                 </p>
               </div>
               
