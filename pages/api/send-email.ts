@@ -10,12 +10,12 @@ export default async function handler(
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
-  const { name, email, message, company, phone } = req.body;
+  const { name, email, message, company, phone, product } = req.body;
 
   // Validate required fields
-  if (!name || !email || !message) {
-    return res.status(400).json({ 
-      message: 'Missing required fields: name, email, and message are required' 
+  if (!name || !email || (!message && !product)) {
+    return res.status(400).json({
+      message: 'Missing required fields: name, email, and message are required'
     });
   }
 
@@ -44,7 +44,20 @@ export default async function handler(
     }
 
     // Format the email content
-    const emailBody = `
+    const emailBody = product
+      ? `
+New beta tester signup from the Bridgemohan Technologies portfolio:
+
+App: ${product}
+Name: ${name}
+Email: ${email}
+WhatsApp: ${phone || 'Not provided'}
+${message ? `\nNotes:\n${message}` : ''}
+
+---
+This message was sent from the portfolio section on bridgemohan.com
+    `.trim()
+      : `
 New contact form submission from Bridgemohan Technologies website:
 
 Name: ${name}
@@ -59,11 +72,15 @@ ${message}
 This message was sent from the contact form on bridgemohan.com
     `.trim();
 
+    const subject = product
+      ? `Beta Signup: ${product} — ${name}`
+      : `New Contact Form Submission from ${name}`;
+
     // Send email using Mailgun
     const data = await mg.messages.create('tech-support.bridgemohan.com', {
       from: 'Bridgemohan Technologies Contact Form <postmaster@tech-support.bridgemohan.com>',
       to: ['Nicholas <nbridgemohan@gmail.com>'],
-      subject: `New Contact Form Submission from ${name}`,
+      subject,
       text: emailBody,
       'h:Reply-To': email, // This allows you to reply directly to the person who submitted the form
     });
