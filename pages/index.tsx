@@ -1,559 +1,286 @@
-import Head from "next/head";
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { BsArrowRight, BsArrowUpRight, BsCodeSlash, BsGear, BsCloud, BsPeople, BsBox, BsCheck, BsStar, BsAward, BsGraphUp, BsLightbulb, BsTrophy, BsRocket, BsSun, BsMoon, BsPalette, BsWindow, BsChatDots, BsCashCoin, BsCart3, BsCalculator, BsGlobe2, BsAndroid2 } from "react-icons/bs";
-import { AiOutlineMail } from "react-icons/ai";
-import { FaPhoneAlt } from "react-icons/fa";
-import Image from "next/image";
+import { useState } from "react";
 import Link from "next/link";
-import { ThemeSwitcher } from "../components/ThemeSwitcher";
+import { motion } from "framer-motion";
+import { BsArrowRight, BsArrowDown, BsCheck } from "react-icons/bs";
+import { Layout, SectionHeader } from "../components/Layout";
+import { Seo } from "../components/Seo";
 import { BetaSignupModal } from "../components/BetaSignupModal";
+import { products, getProduct } from "../data/products";
+import { accents, statusClasses } from "../data/accents";
+import { stats, services, processSteps, techStack, packages, testimonials, SITE_URL, CONTACT_EMAIL } from "../data/site";
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Bridgemohan Technologies",
+  url: SITE_URL,
+  email: CONTACT_EMAIL,
+  description: "Software development company in Trinidad and Tobago building AI chatbots, fintech tools, and web and mobile apps.",
+  address: { "@type": "PostalAddress", addressCountry: "TT" },
+  areaServed: ["Trinidad and Tobago", "Caribbean", "Worldwide"],
+  knowsAbout: ["Software development", "AI chatbots", "Mobile app development", "Web application development"],
+};
+
+const contactHref = (projectType: string) => `/contact?type=${encodeURIComponent(projectType)}`;
 
 export default function Home() {
-  const [isVisible, setIsVisible] = useState(false);
   const [betaApp, setBetaApp] = useState<string | null>(null);
 
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
-  const stats = [
-    { number: "10+", label: "Years Experience", icon: BsAward },
-    { number: "100%", label: "Client Focused", icon: BsStar },
-    { number: "Custom", label: "Solutions", icon: BsTrophy },
-    { number: "Expert", label: "Development", icon: BsCodeSlash }
-  ];
-
-  const portfolio = [
-    {
-      name: "TTomni",
-      tagline: "AI Chat for Your Business",
-      description: "A conversational AI platform that lets businesses deploy an intelligent chat assistant to handle customer questions, capture leads, and keep the conversation going around the clock.",
-      icon: BsChatDots,
-      type: "Web App",
-      typeIcon: BsGlobe2,
-      status: "Live",
-      statusClass: "bg-green-100 dark:bg-green-500/20 text-green-700 dark:text-green-400 border-green-300 dark:border-green-400/30",
-      iconClass: "bg-blue-100 dark:bg-blue-500/20 border-blue-300 dark:border-blue-400/30 text-blue-700 dark:text-blue-400",
-      accentClass: "from-white to-blue-50 dark:from-gray-800/60 dark:to-gray-900/60 border-blue-200/50 dark:border-gray-600/30 hover:border-blue-400/70 dark:hover:border-blue-400/50",
-      ctaClass: "text-blue-700 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300",
-      href: "https://ttomni.app",
-      cta: "Visit ttomni.app",
-    },
-    {
-      name: "BankerPro",
-      tagline: "Turn Bank Statements into Financial Clarity",
-      description: "Upload bank and credit card statements and let AI sort every transaction into categories, surface spending patterns, and recommend ways to save. Currently running in pilot with early users.",
-      icon: BsCashCoin,
-      type: "Web App",
-      typeIcon: BsGlobe2,
-      status: "Pilot",
-      statusClass: "bg-purple-100 dark:bg-purple-500/20 text-purple-700 dark:text-purple-400 border-purple-300 dark:border-purple-400/30",
-      iconClass: "bg-purple-100 dark:bg-purple-500/20 border-purple-300 dark:border-purple-400/30 text-purple-700 dark:text-purple-400",
-      accentClass: "from-white to-purple-50 dark:from-gray-800/60 dark:to-gray-900/60 border-purple-200/50 dark:border-gray-600/30 hover:border-purple-400/70 dark:hover:border-purple-400/50",
-      ctaClass: "text-purple-700 dark:text-purple-400 hover:text-purple-600 dark:hover:text-purple-300",
-      href: "https://bankerpro.vercel.app",
-      cta: "View Pilot",
-    },
-    {
-      name: "GroceryHubTT",
-      tagline: "Create. Compare. Save.",
-      description: "A crowdsourced grocery app for Trinidad & Tobago — scan receipts, compare prices across stores like Hi-Lo, Massy, and PriceSmart, and build smarter shopping lists.",
-      icon: BsCart3,
-      type: "Android App",
-      typeIcon: BsAndroid2,
-      status: "In Testing",
-      statusClass: "bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400 border-amber-300 dark:border-amber-400/30",
-      iconClass: "bg-green-100 dark:bg-green-500/20 border-green-300 dark:border-green-400/30 text-green-700 dark:text-green-400",
-      accentClass: "from-white to-green-50 dark:from-gray-800/60 dark:to-gray-900/60 border-green-200/50 dark:border-gray-600/30 hover:border-green-400/70 dark:hover:border-green-400/50",
-      ctaClass: "text-green-700 dark:text-green-400 hover:text-green-600 dark:hover:text-green-300",
-      isBeta: true,
-      cta: "Join the Beta",
-    },
-    {
-      name: "SEA Quest TT",
-      tagline: "Story-Driven Math Adventures",
-      description: "A gamified learning app that helps Trinidad's SEA students master the Standard 5 maths curriculum through quests, practice cards, XP, and progress tracking.",
-      icon: BsCalculator,
-      type: "Android App",
-      typeIcon: BsAndroid2,
-      status: "In Testing",
-      statusClass: "bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400 border-amber-300 dark:border-amber-400/30",
-      iconClass: "bg-indigo-100 dark:bg-indigo-500/20 border-indigo-300 dark:border-indigo-400/30 text-indigo-700 dark:text-indigo-400",
-      accentClass: "from-white to-indigo-50 dark:from-gray-800/60 dark:to-gray-900/60 border-indigo-200/50 dark:border-gray-600/30 hover:border-indigo-400/70 dark:hover:border-indigo-400/50",
-      ctaClass: "text-indigo-700 dark:text-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-300",
-      isBeta: true,
-      cta: "Join the Beta",
-    },
-  ];
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-gray-50 dark:from-slate-900 dark:via-gray-900 dark:to-black text-slate-900 dark:text-white font-['Inter',_sans-serif] transition-colors duration-300">
-      <Head>
-        <title>Bridgemohan Technologies | Web Design & Development | HR & Payroll Software Solutions</title>
-        <meta name="description" content="Professional web design & development, HR & Payroll solutions, Inventory Management systems, and custom software development for modern businesses." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+    <Layout>
+      <Seo
+        title="Software Development in Trinidad | AI Chatbots & Apps | Bridgemohan Technologies"
+        description="Trinidad and Tobago software company building AI chatbots, fintech tools, and web and mobile apps. See four products we've built, then book a free consultation."
+        path="/"
+        jsonLd={organizationJsonLd}
+      />
 
-      </Head>
-
-      {/* Enhanced Animated Background */}
-      <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-200/30 via-indigo-100/20 to-transparent dark:from-blue-600/30 dark:via-indigo-500/20 dark:to-transparent animate-pulse"></div>
-        <div className="absolute inset-0 bg-[linear-gradient(45deg,#3b82f6,#6366f1,#8b5cf6,#a855f7)] opacity-5 dark:opacity-10 animate-gradient-x"></div>
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiM5QzkyQUMiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+')] opacity-20 dark:opacity-40"></div>
-      </div>
-
-      {/* Enhanced Navigation */}
-      <nav className="fixed w-full bg-white/60 dark:bg-black/60 backdrop-blur-xl z-50 border-b border-slate-200/20 dark:border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
-            <div className="flex-shrink-0">
-              <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-500 text-transparent bg-clip-text hover:from-blue-500 hover:via-indigo-500 hover:to-purple-500 dark:hover:from-blue-300 dark:hover:to-purple-400 transition-all duration-300">
-                Bridgemohan Technologies
-              </Link>
-            </div>
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="#services" className="text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-slate-100/50 dark:hover:bg-white/5">Services</a>
-              <a href="#portfolio" className="text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-slate-100/50 dark:hover:bg-white/5">Portfolio</a>
-              <a href="#process" className="text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-slate-100/50 dark:hover:bg-white/5">Process</a>
-              <a href="#about" className="text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-slate-100/50 dark:hover:bg-white/5">About</a>
-              <Link href="/contact" className="bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-500 hover:to-indigo-600 px-6 py-2 rounded-full text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30">Get Started</Link>
-              <ThemeSwitcher />
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      {/* Enhanced Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-4 pt-20">
+      {/* Hero */}
+      <section className="px-4 pt-32 pb-20 md:pt-44 md:pb-28">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="text-center z-10 max-w-6xl mx-auto"
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center max-w-5xl mx-auto"
         >
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-8 leading-snug tracking-tight">
-            <span className="bg-gradient-to-r from-slate-800 via-slate-700 to-slate-600 dark:from-white dark:via-blue-100 dark:to-indigo-200 text-transparent bg-clip-text block mb-2">
-              Web Design
-            </span>
-            <span className="bg-gradient-to-r from-blue-600 via-indigo-700 to-purple-800 dark:from-blue-400 dark:via-indigo-500 dark:to-purple-600 text-transparent bg-clip-text">
-              & Software Solutions
-            </span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight tracking-tight">
+            <span className="text-slate-800 dark:text-white">We build AI, fintech and consumer apps for </span>
+            <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-500 text-transparent bg-clip-text">Caribbean businesses.</span>
           </h1>
-
-          <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
-            Let us help you with tailor made solutions to see your business thrive. Specializing in modern web design & development, HR & Payroll management, Inventory tracking systems, and custom software solutions to streamline your operations and boost productivity.
+          <p className="text-2xl md:text-3xl font-semibold text-slate-700 dark:text-slate-200 mb-6">Here are four we&apos;ve built.</p>
+          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-10 max-w-3xl mx-auto leading-relaxed">
+            10+ years of software experience. Based in Trinidad &amp; Tobago, working with clients locally and internationally.
           </p>
-          
-          <div className="flex flex-col lg:flex-row gap-6 justify-center items-center mb-16">
-            <Link href="/contact" legacyBehavior>
-              <motion.a
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center px-10 py-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-bold text-lg hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-300 group"
-              >
-                Start Your Transformation
-                <BsRocket className="ml-3 group-hover:translate-x-1 transition-transform duration-300" />
-              </motion.a>
-            </Link>
-            
-            <motion.a
-              href="#process"
-              whileHover={{ scale: 1.02 }}
-              className="inline-flex items-center px-10 py-4 rounded-full border-2 border-slate-300 dark:border-white/20 text-slate-700 dark:text-white font-semibold text-lg hover:bg-slate-100/50 dark:hover:bg-white/10 transition-all duration-300 backdrop-blur-sm"
-            >
-              View Our Process
-              <BsArrowRight className="ml-3" />
-            </motion.a>
-          </div>
 
-          {/* Contact Info with Enhanced Styling */}
-          <div className="flex flex-col sm:flex-row gap-8 justify-center items-center text-slate-600 dark:text-slate-400">
-            <motion.a
-              href="mailto:nbridgemohan@gmail.com"
-              whileHover={{ scale: 1.05 }}
-              className="flex items-center group transition-all duration-300 hover:text-blue-600 dark:hover:text-blue-400"
-            >
-              <div className="p-3 rounded-full bg-blue-500/20 border border-blue-400/30 mr-3 group-hover:bg-blue-500/30 transition-all duration-300">
-                <AiOutlineMail className="text-blue-600 dark:text-blue-400" />
-              </div>
-              <span className="font-medium">nbridgemohan@gmail.com</span>
-            </motion.a>
-            
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link href="/contact" className="w-full sm:w-auto inline-flex justify-center items-center px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-bold text-lg hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-300">
+              Book a free consultation <BsArrowRight className="ml-3" />
+            </Link>
+            <a href="#work" className="w-full sm:w-auto inline-flex justify-center items-center px-8 py-4 rounded-full border-2 border-slate-300 dark:border-white/20 text-slate-700 dark:text-white font-semibold text-lg hover:bg-slate-100/50 dark:hover:bg-white/10 transition-all duration-300">
+              See our work <BsArrowDown className="ml-3" />
+            </a>
           </div>
         </motion.div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 px-4 border-y border-slate-200/20 dark:border-white/10 bg-slate-100/20 dark:bg-black/20 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center group"
-              >
-                <div className="p-4 rounded-full bg-gradient-to-br from-blue-500/20 to-indigo-600/20 border border-blue-400/30 w-20 h-20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <stat.icon className="text-2xl text-blue-600 dark:text-blue-400" />
-                </div>
-                <div className="text-3xl md:text-4xl font-black text-slate-800 dark:text-white mb-2">{stat.number}</div>
-                <div className="text-slate-600 dark:text-slate-400 font-medium">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
+      {/* Proof numbers */}
+      <section className="py-12 px-4 border-y border-slate-200/60 dark:border-white/10 bg-slate-100/30 dark:bg-black/20">
+        <div className="max-w-6xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8">
+          {stats.map((stat) => (
+            <div key={stat.label} className="text-center">
+              <div className="text-2xl md:text-4xl font-black text-slate-800 dark:text-white mb-1">{stat.number}</div>
+              <div className="text-sm md:text-base text-slate-600 dark:text-slate-400 font-medium">{stat.label}</div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Enhanced Services Section */}
-      <section id="services" className="py-24 px-4">
+      {/* Work */}
+      <section id="work" className="py-20 md:py-24 px-4 scroll-mt-16">
         <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-20"
-          >
-            <span className="inline-block px-4 py-2 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-sm font-semibold mb-6">
-              💼 Our Expertise
-            </span>
-            <h2 className="text-4xl md:text-6xl font-black mb-6 bg-gradient-to-r from-slate-800 via-blue-800 to-indigo-900 dark:from-white dark:to-slate-300 text-transparent bg-clip-text">
-              Comprehensive Digital Solutions
-            </h2>
-            <p className="text-xl text-slate-700 dark:text-slate-400 max-w-4xl mx-auto font-light leading-relaxed">
-              From stunning web design to HR management and inventory tracking, we deliver comprehensive digital solutions that elevate your online presence and streamline your business operations.
-            </p>
-          </motion.div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <motion.div
-              whileHover={{ y: -10, scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-              className="p-8 rounded-2xl bg-gradient-to-br from-white to-indigo-50 dark:from-gray-800/60 dark:to-gray-900/60 backdrop-blur-sm border border-indigo-200/50 dark:border-gray-600/30 hover:border-indigo-400/70 dark:hover:border-indigo-400/50 shadow-lg dark:shadow-none group"
-            >
-              <div className="p-4 rounded-2xl bg-indigo-100 dark:bg-indigo-500/20 border border-indigo-300 dark:border-indigo-400/30 w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <BsPalette className="text-2xl text-indigo-700 dark:text-indigo-400" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">Web Design & Development</h3>
-              <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Modern, responsive websites and web applications that captivate your audience and drive business growth with stunning design and seamless functionality.</p>
-              <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-3 mb-6">
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Responsive Website Design</li>
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />E-Commerce Solutions</li>
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />UI/UX Design & Optimization</li>
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Content Management Systems</li>
-              </ul>
-              <Link href="/contact" className="inline-flex items-center text-indigo-700 dark:text-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-300 font-semibold group-hover:translate-x-2 transition-all duration-300">
-                Learn More <BsArrowRight className="ml-2" />
-              </Link>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ y: -10, scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-              className="p-8 rounded-2xl bg-gradient-to-br from-white to-blue-50 dark:from-gray-800/60 dark:to-gray-900/60 backdrop-blur-sm border border-blue-200/50 dark:border-gray-600/30 hover:border-blue-400/70 dark:hover:border-blue-400/50 shadow-lg dark:shadow-none group"
-            >
-              <div className="p-4 rounded-2xl bg-blue-100 dark:bg-blue-500/20 border border-blue-300 dark:border-blue-400/30 w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <BsGear className="text-2xl text-blue-700 dark:text-blue-400" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">Business Software Applications</h3>
-              <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Cloud-based web and mobile applications for HR, Payroll, and Inventory Management to streamline your business operations.</p>
-              <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-3 mb-6">
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />HR & Payroll Management</li>
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Inventory Tracking Systems</li>
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Employee & Time Management</li>
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Real-time Reporting & Analytics</li>
-              </ul>
-              <Link href="/contact" className="inline-flex items-center text-blue-700 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 font-semibold group-hover:translate-x-2 transition-all duration-300">
-                Learn More <BsArrowRight className="ml-2" />
-              </Link>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ y: -10, scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-              className="p-8 rounded-2xl bg-gradient-to-br from-white to-green-50 dark:from-gray-800/60 dark:to-gray-900/60 backdrop-blur-sm border border-green-200/50 dark:border-gray-600/30 hover:border-green-400/70 dark:hover:border-green-400/50 shadow-lg dark:shadow-none group"
-            >
-              <div className="p-4 rounded-2xl bg-green-100 dark:bg-green-500/20 border border-green-300 dark:border-green-400/30 w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <BsCodeSlash className="text-2xl text-green-700 dark:text-green-400" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">Custom Software Solutions</h3>
-              <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Enterprise-grade web and mobile applications designed specifically for your business needs, including HR & Payroll systems and Inventory Management.</p>
-              <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-3 mb-6">
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Web & Mobile App Development</li>
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />HR & Payroll Web Applications</li>
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Inventory Management Apps</li>
-                <li className="flex items-center"><BsCheck className="text-green-600 dark:text-green-400 mr-3 text-lg" />Cloud-Based Business Solutions</li>
-              </ul>
-              <Link href="/contact" className="inline-flex items-center text-green-700 dark:text-green-400 hover:text-green-600 dark:hover:text-green-300 font-semibold group-hover:translate-x-2 transition-all duration-300">
-                Learn More <BsArrowRight className="ml-2" />
-              </Link>
-            </motion.div>
-
-
-          </div>
-        </div>
-      </section>
-
-      {/* Portfolio Section */}
-      <section id="portfolio" className="py-24 px-4 bg-gradient-to-r from-slate-50/50 to-blue-50/50 dark:from-slate-900/50 dark:to-gray-900/50 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-20"
-          >
-            <span className="inline-block px-4 py-2 rounded-full bg-purple-500/20 border border-purple-400/30 text-purple-300 text-sm font-semibold mb-6">
-              🚀 Our Portfolio
-            </span>
-            <h2 className="text-4xl md:text-6xl font-black mb-6 bg-gradient-to-r from-slate-800 via-blue-800 to-indigo-900 dark:from-white dark:to-slate-300 text-transparent bg-clip-text">
-              Products We&apos;ve Built
-            </h2>
-            <p className="text-xl text-slate-700 dark:text-slate-400 max-w-4xl mx-auto font-light leading-relaxed">
-              Beyond client work, we build and ship our own web and mobile products — a look at what we&apos;re creating.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {portfolio.map((app, index) => (
-              <motion.div
-                key={app.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -6 }}
-                className={`p-8 rounded-2xl bg-gradient-to-br backdrop-blur-sm border shadow-lg dark:shadow-none group flex flex-col ${app.accentClass}`}
-              >
-                <div className="flex items-start justify-between mb-6">
-                  <div className={`p-4 rounded-2xl border w-16 h-16 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 ${app.iconClass}`}>
-                    <app.icon className="text-2xl" />
+          <SectionHeader
+            eyebrow="Our work"
+            title="Products we've built"
+            intro="We design, build and run our own products. Each one is a working example of what we can build for you."
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            {products.map((product, index) => {
+              const accent = accents[product.accent];
+              return (
+                <motion.div
+                  key={product.slug}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                  className={`p-6 md:p-8 rounded-2xl bg-gradient-to-br dark:from-gray-800/60 dark:to-gray-900/60 dark:border-gray-600/30 border shadow-lg dark:shadow-none flex flex-col ${accent.card}`}
+                >
+                  <div className="flex items-start justify-between mb-5">
+                    <div className={`p-4 rounded-2xl border w-14 h-14 flex items-center justify-center ${accent.icon}`}>
+                      <product.icon className="text-2xl" />
+                    </div>
+                    <div className="flex flex-col items-end gap-2">
+                      <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">{product.platform}</span>
+                      <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${statusClasses[product.status]}`}>{product.status}</span>
+                    </div>
                   </div>
-                  <div className="flex flex-col items-end gap-2">
-                    <span className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 dark:text-slate-400">
-                      <app.typeIcon className="text-sm" /> {app.type}
-                    </span>
-                    <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${app.statusClass}`}>
-                      {app.status}
-                    </span>
+                  <h3 className="text-2xl font-bold mb-1 text-slate-800 dark:text-white">{product.name}</h3>
+                  <p className="text-sm font-medium mb-3 text-slate-500 dark:text-slate-400">{product.tagline}</p>
+                  <p className="text-slate-600 dark:text-slate-400 mb-5 leading-relaxed flex-grow">{product.summary}</p>
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {product.stack.flatMap((s) => s.items).slice(0, 4).map((tech) => (
+                      <span key={tech} className={`px-2.5 py-1 rounded-md text-xs font-medium ${accent.chip}`}>{tech}</span>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+                    <Link href={`/work/${product.slug}`} className={`inline-flex items-center font-semibold ${accent.link}`}>
+                      Read the case study <BsArrowRight className="ml-2" />
+                    </Link>
+                    {product.beta ? (
+                      <button onClick={() => setBetaApp(product.name)} className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200">
+                        Join the beta
+                      </button>
+                    ) : product.link ? (
+                      <a href={product.link.href} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200">
+                        {product.link.label} ↗
+                      </a>
+                    ) : null}
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section id="services" className="py-20 md:py-24 px-4 bg-slate-50/60 dark:bg-slate-900/40 scroll-mt-16">
+        <div className="max-w-7xl mx-auto">
+          <SectionHeader
+            eyebrow="Services"
+            title="What we can build for you"
+            intro="Every service is backed by a product we've already built, so you can see the work before you hire us."
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            {services.map((service) => {
+              const accent = accents[service.accent];
+              const proof = getProduct(service.proofSlug);
+              return (
+                <div key={service.title} className="p-6 md:p-8 rounded-2xl bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700 shadow-sm flex flex-col">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className={`p-3 rounded-xl border w-12 h-12 flex items-center justify-center shrink-0 ${accent.icon}`}>
+                      <service.icon className="text-xl" />
+                    </div>
+                    <h3 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-white">{service.title}</h3>
+                  </div>
+                  <p className="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400 mb-1">Who it&apos;s for</p>
+                  <p className="text-slate-600 dark:text-slate-300 mb-4">{service.forWho}</p>
+                  <p className="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400 mb-2">What we deliver</p>
+                  <ul className="space-y-2 mb-6 flex-grow">
+                    {service.deliver.map((item) => (
+                      <li key={item} className="flex items-start text-slate-600 dark:text-slate-300">
+                        <BsCheck className="text-green-600 dark:text-green-400 mr-2 mt-1 shrink-0" />{item}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-4 border-t border-slate-200 dark:border-gray-700">
+                    {proof && (
+                      <Link href={`/work/${proof.slug}`} className={`inline-flex items-center font-semibold ${accent.link}`}>
+                        See {proof.name} <BsArrowRight className="ml-2" />
+                      </Link>
+                    )}
+                    <Link href={contactHref(service.projectType)} className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200">
+                      Discuss a project
+                    </Link>
                   </div>
                 </div>
-
-                <h3 className="text-2xl font-bold mb-1 text-slate-800 dark:text-white">{app.name}</h3>
-                <p className="text-sm font-medium mb-4 text-slate-500 dark:text-slate-400">{app.tagline}</p>
-                <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed flex-grow">{app.description}</p>
-
-                {app.isBeta ? (
-                  <button
-                    onClick={() => setBetaApp(app.name)}
-                    className={`inline-flex items-center font-semibold group-hover:translate-x-2 transition-all duration-300 self-start ${app.ctaClass}`}
-                  >
-                    {app.cta} <BsArrowRight className="ml-2" />
-                  </button>
-                ) : (
-                  <a
-                    href={app.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`inline-flex items-center font-semibold group-hover:translate-x-2 transition-all duration-300 self-start ${app.ctaClass}`}
-                  >
-                    {app.cta} <BsArrowUpRight className="ml-2" />
-                  </a>
-                )}
-              </motion.div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Process Section */}
-      <section id="process" className="py-24 px-4 bg-gradient-to-r from-slate-50/50 to-blue-50/50 dark:from-slate-900/50 dark:to-gray-900/50 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-20"
-          >
-            <span className="inline-block px-4 py-2 rounded-full bg-green-500/20 border border-green-400/30 text-green-300 text-sm font-semibold mb-6">
-              🎯 Our Methodology
-            </span>
-            <h2 className="text-4xl md:text-6xl font-black mb-6 bg-gradient-to-r from-slate-800 via-blue-800 to-indigo-900 dark:from-white dark:to-slate-300 text-transparent bg-clip-text">
-              Proven Delivery Process
-            </h2>
-            <p className="text-xl text-slate-700 dark:text-slate-400 max-w-4xl mx-auto font-light leading-relaxed">
-              Our structured approach ensures successful project delivery, on-time and within budget, every single time.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { step: "01", title: "Discovery & Analysis", description: "Deep-dive into your business requirements, challenges, and objectives to create a comprehensive project blueprint.", icon: BsLightbulb },
-              { step: "02", title: "Strategy & Planning", description: "Develop detailed technical specifications, project timeline, and resource allocation for optimal execution.", icon: BsGear },
-              { step: "03", title: "Development & Testing", description: "Agile development with continuous integration, rigorous testing, and regular client feedback loops.", icon: BsCodeSlash },
-              { step: "04", title: "Deployment & Support", description: "Seamless launch with comprehensive training, documentation, and ongoing technical support.", icon: BsRocket }
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center group"
-              >
-                <div className="relative mb-8">
-                  <div className="w-20 h-20 bg-gradient-to-br from-blue-500/20 to-indigo-600/20 border border-blue-400/30 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
-                    <item.icon className="text-2xl text-blue-400" />
-                  </div>
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-full flex items-center justify-center text-white text-sm font-bold">
-                    {item.step}
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-slate-800 dark:text-white">{item.title}</h3>
-                <p className="text-slate-600 dark:text-slate-400 leading-relaxed">{item.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-
-
-      {/* Enhanced About Section */}
-      <section id="about" className="py-24 px-4 bg-gradient-to-r from-slate-50/50 to-gray-50/50 dark:from-gray-900/50 dark:to-slate-900/50 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-20"
-          >
-            <span className="inline-block px-4 py-2 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 text-sm font-semibold mb-6">
-              🏆 Why Choose Us
-            </span>
-            <h2 className="text-4xl md:text-6xl font-black mb-6 bg-gradient-to-r from-slate-800 via-blue-800 to-indigo-900 dark:from-white dark:to-slate-300 text-transparent bg-clip-text">
-              Your Digital Transformation Partner
-            </h2>
-            <p className="text-xl text-slate-700 dark:text-slate-400 max-w-4xl mx-auto font-light leading-relaxed">
-              Bridgemohan Technologies specializes in modern web design, enterprise web applications, mobile apps, and cloud-based business software including HR & Payroll systems and Inventory Management solutions that streamline operations and drive productivity.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-center group"
-            >
-              <div className="w-24 h-24 bg-gradient-to-br from-blue-500/20 to-indigo-600/20 border border-blue-400/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <BsAward className="text-3xl text-blue-400" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">10+ Years of Excellence</h3>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">Proven expertise in web design, enterprise web applications, mobile apps, and cloud-based business solutions for companies of all sizes.</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-center group"
-            >
-              <div className="w-24 h-24 bg-gradient-to-br from-purple-500/20 to-indigo-600/20 border border-purple-400/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <BsPeople className="text-3xl text-purple-400" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">Business-Focused Solutions</h3>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">From stunning websites to complex business applications, we understand your needs and deliver web and mobile solutions that fit your workflow perfectly.</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-center group"
-            >
-              <div className="w-24 h-24 bg-gradient-to-br from-green-500/20 to-emerald-600/20 border border-green-400/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <BsGraphUp className="text-3xl text-green-400" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-white">Modern Web & Mobile Solutions</h3>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">Our web and mobile applications automate manual processes, provide seamless user experiences, and deliver real-time insights to boost your business efficiency.</p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Enhanced Contact CTA Section */}
-      <section className="py-24 px-4">
-        <div className="max-w-5xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="relative"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-3xl blur-3xl"></div>
-            <div className="relative p-12 rounded-3xl bg-gradient-to-br from-white/90 to-blue-50/90 dark:from-gray-800/60 dark:to-gray-900/60 backdrop-blur-sm border border-blue-200/50 dark:border-gray-600/30 shadow-xl dark:shadow-none">
-              <span className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-400/30 text-blue-700 dark:text-blue-300 text-sm font-semibold mb-8">
-                🚀 Ready to Transform?
+      {/* Tech stack */}
+      <section className="py-16 px-4">
+        <div className="max-w-6xl mx-auto text-center">
+          <p className="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400 mb-6">Technologies in our products</p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {techStack.map((tech) => (
+              <span key={tech} className="px-4 py-2 rounded-full bg-white dark:bg-gray-800/60 border border-slate-200 dark:border-gray-700 text-slate-700 dark:text-slate-200 text-sm font-medium">
+                {tech}
               </span>
-              
-              <h2 className="text-4xl md:text-5xl font-black mb-6 bg-gradient-to-r from-slate-800 via-blue-800 to-indigo-900 dark:from-white dark:to-slate-300 text-transparent bg-clip-text">
-                Let&apos;s Build the Future Together
-              </h2>
-              
-              <p className="text-xl text-slate-700 dark:text-slate-400 mb-10 max-w-3xl mx-auto leading-relaxed">
-                Don&apos;t let technology limitations hold your business back. Schedule a free consultation and discover how we can accelerate your digital transformation.
-              </p>
-              
-              <div className="flex flex-col lg:flex-row gap-6 justify-center items-center mb-12">
-                <Link href="/contact" legacyBehavior>
-                  <motion.a
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="inline-flex items-center px-10 py-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-bold text-lg hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-300 group"
-                  >
-                    Schedule Free Consultation
-                    <BsRocket className="ml-3 group-hover:translate-x-1 transition-transform duration-300" />
-                  </motion.a>
-                </Link>
-                
-              </div>
-            </div>
-          </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Enhanced Footer */}
-      <footer className="bg-slate-100/80 dark:bg-black/80 backdrop-blur-xl py-16 border-t border-slate-200/20 dark:border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <Link href="/" className="text-3xl font-black bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600 text-transparent bg-clip-text inline-block mb-8 hover:from-blue-300 hover:to-purple-500 transition-all duration-300">
-              Bridgemohan Technologies Consulting
-            </Link>
-            
-            <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-12 text-lg leading-relaxed">
-              Empowering businesses through innovative technology solutions. Your success is our mission.
-            </p>
-            
-            <div className="flex justify-center space-x-8 mb-12">
-              <motion.a
-                href="mailto:nbridgemohan@gmail.com"
-                whileHover={{ scale: 1.1, y: -2 }}
-                className="p-4 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-400 hover:bg-blue-500/30 transition-all duration-300"
-              >
-                <AiOutlineMail className="text-2xl" />
-              </motion.a>
-            </div>
-            
-            <div className="text-slate-600 dark:text-slate-500 text-sm">
-              &copy; {new Date().getFullYear()} Bridgemohan Technologies. All rights reserved.
-            </div>
+      {/* How we work */}
+      <section id="process" className="py-20 md:py-24 px-4 bg-slate-50/60 dark:bg-slate-900/40 scroll-mt-16">
+        <div className="max-w-7xl mx-auto">
+          <SectionHeader eyebrow="How we work" title="From first call to launch, and after" />
+          <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+            {processSteps.map((step, index) => (
+              <li key={step.title} className="p-6 rounded-2xl bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white text-sm font-bold flex items-center justify-center">{index + 1}</span>
+                  <step.icon className="text-xl text-blue-600 dark:text-blue-400" />
+                </div>
+                <h3 className="text-lg font-bold mb-2 text-slate-800 dark:text-white">{step.title}</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{step.description}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* Starter packages */}
+      <section id="packages" className="py-20 md:py-24 px-4 scroll-mt-16">
+        <div className="max-w-7xl mx-auto">
+          <SectionHeader
+            eyebrow="Starter packages"
+            title="A clear first step"
+            intro="Fixed-scope packages for the projects we're asked about most. Need something different? We'll scope it with you."
+          />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            {packages.map((pkg) => (
+              <div key={pkg.name} className="p-6 md:p-8 rounded-2xl bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700 shadow-sm flex flex-col">
+                <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-2">{pkg.name}</h3>
+                <p className="text-slate-600 dark:text-slate-400 mb-4">{pkg.description}</p>
+                <div className="mb-5">
+                  {pkg.priceFrom ? (
+                    <p className="text-slate-800 dark:text-white"><span className="text-sm text-slate-500 dark:text-slate-400">from </span><span className="text-3xl font-black">{pkg.priceFrom}</span></p>
+                  ) : (
+                    <p className="text-lg font-semibold text-slate-800 dark:text-white">Fixed quote after a free call</p>
+                  )}
+                  {pkg.timeline && <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">{pkg.timeline}</p>}
+                </div>
+                <ul className="space-y-2 mb-6 flex-grow">
+                  {pkg.includes.map((item) => (
+                    <li key={item} className="flex items-start text-sm text-slate-600 dark:text-slate-300">
+                      <BsCheck className="text-green-600 dark:text-green-400 mr-2 mt-0.5 shrink-0" />{item}
+                    </li>
+                  ))}
+                </ul>
+                <Link href={contactHref(pkg.projectType)} className="inline-flex justify-center items-center px-6 py-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-semibold hover:shadow-lg hover:shadow-blue-500/30">
+                  Get started <BsArrowRight className="ml-2" />
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
-      </footer>
+      </section>
+
+      {/* Testimonials: hidden until there is at least one real quote */}
+      {testimonials.length > 0 && (
+        <section className="py-20 md:py-24 px-4 bg-slate-50/60 dark:bg-slate-900/40">
+          <div className="max-w-6xl mx-auto">
+            <SectionHeader eyebrow="Feedback" title="What people say" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {testimonials.map((t) => (
+                <figure key={t.name} className="p-6 md:p-8 rounded-2xl bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700">
+                  <blockquote className="text-lg text-slate-700 dark:text-slate-200 mb-4">&ldquo;{t.quote}&rdquo;</blockquote>
+                  <figcaption className="text-sm text-slate-500 dark:text-slate-400"><span className="font-semibold text-slate-700 dark:text-slate-200">{t.name}</span>, {t.role}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Final CTA */}
+      <section className="py-20 md:py-24 px-4">
+        <div className="max-w-4xl mx-auto text-center p-8 md:p-12 rounded-3xl bg-gradient-to-br from-white/90 to-blue-50/90 dark:from-gray-800/60 dark:to-gray-900/60 border border-blue-200/50 dark:border-gray-600/30 shadow-xl dark:shadow-none">
+          <h2 className="text-3xl md:text-5xl font-black mb-4 text-slate-800 dark:text-white">Have a project in mind?</h2>
+          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
+            Tell us what you want to build and we&apos;ll set up a free consultation to talk it through.
+          </p>
+          <Link href="/contact" className="inline-flex items-center px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-bold text-lg hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-300">
+            Book a free consultation <BsArrowRight className="ml-3" />
+          </Link>
+        </div>
+      </section>
 
       <BetaSignupModal appName={betaApp} onClose={() => setBetaApp(null)} />
-    </div>
+    </Layout>
   );
 }

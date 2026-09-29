@@ -10,7 +10,7 @@ export default async function handler(
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
-  const { name, email, message, company, phone, product } = req.body;
+  const { name, email, message, company, phone, product, projectType, budget } = req.body;
 
   // Validate required fields
   if (!name || !email || (!message && !product)) {
@@ -62,6 +62,8 @@ New contact form submission from Bridgemohan Technologies website:
 
 Name: ${name}
 Email: ${email}
+${projectType ? `Project type: ${projectType}` : ''}
+${budget ? `Budget: ${budget}` : ''}
 ${company ? `Company: ${company}` : ''}
 ${phone ? `Phone: ${phone}` : ''}
 
@@ -74,7 +76,7 @@ This message was sent from the contact form on bridgemohan.com
 
     const subject = product
       ? `Beta Signup: ${product} — ${name}`
-      : `New Contact Form Submission from ${name}`;
+      : `New Enquiry${projectType ? ` (${projectType})` : ''} from ${name}`;
 
     // Send email using Mailgun
     const data = await mg.messages.create('tech-support.bridgemohan.com', {

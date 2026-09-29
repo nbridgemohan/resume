@@ -1,30 +1,36 @@
-import Head from "next/head";
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { BsArrowRight, BsEnvelope, BsPhone } from "react-icons/bs";
-import { AiOutlineMail, AiFillLinkedin, AiFillGithub, AiOutlineTwitter, AiOutlineInstagram } from "react-icons/ai";
-import { FaMapMarkerAlt } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
-import { ThemeSwitcher } from "../components/ThemeSwitcher";
+import { BsArrowRight, BsEnvelope } from "react-icons/bs";
+import { Layout } from "../components/Layout";
+import { Seo } from "../components/Seo";
+import { products } from "../data/products";
+import { projectTypes, budgetRanges, CONTACT_EMAIL } from "../data/site";
+
+const emptyForm = { name: "", email: "", projectType: "", budget: "", message: "" };
+
+const inputClass =
+  "w-full px-4 py-3 bg-slate-50 dark:bg-gray-900/50 border border-slate-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white";
+const labelClass = "block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1";
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-    company: "",
-    phone: "",
-  });
+  const router = useRouter();
+  const [formData, setFormData] = useState(emptyForm);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  // Preselect the project type when arriving from a service, package or case study link.
+  useEffect(() => {
+    const type = router.query.type;
+    if (typeof type === "string" && projectTypes.includes(type)) {
+      setFormData((prev) => ({ ...prev, projectType: type }));
+    }
+  }, [router.query.type]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -34,185 +40,86 @@ export default function Contact() {
     setSubmitError("");
 
     try {
-      // Send form data to API endpoint
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-
       const data = await response.json();
-      
       if (!response.ok) {
-        throw new Error(data.message || 'Failed to send message');
+        throw new Error(data.message || "Failed to send message");
       }
-      
-      console.log('Email sent successfully', data);
       setSubmitSuccess(true);
-      setFormData({
-        name: "",
-        email: "",
-        message: "",
-        company: "",
-        phone: "",
-      });
+      setFormData(emptyForm);
     } catch (error) {
-      console.error('Error sending message:', error);
-      setSubmitError("There was an error sending your message. Please try again or contact us directly via email.");
+      console.error("Error sending message:", error);
+      setSubmitError("There was an error sending your message. Please try again or email us directly.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-gray-50 dark:from-gray-900 dark:to-black text-slate-900 dark:text-white overflow-hidden transition-colors duration-300">
-      <Head>
-        <title>Contact Us | Bridgemohan Technologies | Web Design & Software Solutions</title>
-        <meta name="description" content="Get in touch for web design, web development, mobile apps, HR & Payroll software, and Inventory Management solutions" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <Layout>
+      <Seo
+        title="Book a Free Consultation | Bridgemohan Technologies, Trinidad and Tobago"
+        description="Tell us about your software project. AI chatbots, business tools, and web and mobile apps built in Trinidad and Tobago."
+        path="/contact"
+      />
 
-      {/* Animated Background */}
-      <div className="fixed inset-0 -z-10">
-        {/* Base gradient */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-600/20 via-violet-500/10 to-black"></div>
-        
-        {/* Subtle moving gradient overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f46e5,#0ea5e9,#4f46e5)] opacity-10 animate-gradient"></div>
-      </div>
-
-      {/* Navigation */}
-      <nav className="fixed w-full bg-white/60 dark:bg-black/50 backdrop-blur-md z-50 border-b border-slate-200/20 dark:border-gray-700/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex-shrink-0">
-              <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:to-purple-500 text-transparent bg-clip-text">
-                Bridgemohan Technologies
-              </Link>
-            </div>
-            <div className="hidden md:flex items-center space-x-4">
-              <Link href="/#services" className="text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">Services</Link>
-              <Link href="/contact" className="text-blue-600 dark:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">Contact</Link>
-              <ThemeSwitcher />
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      {/* Page Content */}
-      <div className="pt-24 pb-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          {/* Page Title */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-16"
-          >
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
-                Get In Touch
-              </span>
-            </h1>
+      <div className="pt-28 md:pt-36 pb-20 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-5xl font-black mb-4 text-slate-800 dark:text-white">Book a free consultation</h1>
             <p className="text-lg text-slate-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Ready to discuss your web design, mobile app, or business software needs? Let&apos;s explore how we can help transform your digital presence and streamline your operations.
+              Tell us a little about your project and we&apos;ll get back to you to set up a call.
             </p>
-          </motion.div>
+          </div>
 
-          {/* Contact Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-            {/* Contact Form */}
-            <motion.div 
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white/80 dark:bg-gray-800/50 backdrop-blur-sm p-8 rounded-xl border border-slate-200 dark:border-gray-700 shadow-lg dark:shadow-none"
-            >
-              <h2 className="text-2xl font-semibold mb-6 text-slate-800 dark:text-white">Send us a message</h2>
-              
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
+            <div className="lg:col-span-3 bg-white/80 dark:bg-gray-800/50 p-6 md:p-8 rounded-xl border border-slate-200 dark:border-gray-700 shadow-lg dark:shadow-none">
               {submitSuccess && (
-                <div className="mb-6 p-4 bg-green-500/20 border border-green-500 rounded-md">
-                  <p className="text-green-300">Your message has been sent successfully! We&apos;ll get back to you soon.</p>
+                <div className="mb-6 p-4 bg-green-50 dark:bg-green-500/20 border border-green-500 rounded-md">
+                  <p className="text-green-700 dark:text-green-300">Thanks, your message has been sent. We&apos;ll be in touch soon.</p>
+                </div>
+              )}
+              {submitError && (
+                <div className="mb-6 p-4 bg-red-50 dark:bg-red-500/20 border border-red-500 rounded-md">
+                  <p className="text-red-700 dark:text-red-300">{submitError}</p>
                 </div>
               )}
 
-              {submitError && (
-                <div className="mb-6 p-4 bg-red-500/20 border border-red-500 rounded-md">
-                  <p className="text-red-300">{submitError}</p>
-                </div>
-              )}
-              
-              <form onSubmit={handleSubmit}>
-                <div className="mb-4">
-                  <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1">
-                    Your Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 bg-slate-50 dark:bg-gray-900/50 border border-slate-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white"
-                    placeholder="John Doe"
-                  />
-                </div>
-                
-                <div className="mb-4">
-                  <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 bg-slate-50 dark:bg-gray-900/50 border border-slate-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white"
-                    placeholder="john@example.com"
-                  />
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1">
-                      Company
-                    </label>
-                    <input
-                      type="text"
-                      id="company"
-                      name="company"
-                      value={formData.company}
-                      onChange={handleChange}
-                      className="w-full px-4 py-2 bg-slate-50 dark:bg-gray-900/50 border border-slate-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white"
-                      placeholder="Your Company"
-                    />
+                    <label htmlFor="name" className={labelClass}>Name *</label>
+                    <input type="text" id="name" name="name" required autoComplete="name" value={formData.name} onChange={handleChange} className={inputClass} />
                   </div>
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full px-4 py-2 bg-slate-50 dark:bg-gray-900/50 border border-slate-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white"
-                      placeholder="+1 (123) 456-7890"
-                    />
+                    <label htmlFor="email" className={labelClass}>Email *</label>
+                    <input type="email" id="email" name="email" required autoComplete="email" value={formData.email} onChange={handleChange} className={inputClass} />
                   </div>
                 </div>
-                
-                <div className="mb-6">
-                  <label htmlFor="message" className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1">
-                    Your Message *
-                  </label>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div>
+                    <label htmlFor="projectType" className={labelClass}>Project type *</label>
+                    <select id="projectType" name="projectType" required value={formData.projectType} onChange={handleChange} className={inputClass}>
+                      <option value="" disabled>Choose one</option>
+                      {projectTypes.map((type) => <option key={type} value={type}>{type}</option>)}
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="budget" className={labelClass}>Budget range</label>
+                    <select id="budget" name="budget" value={formData.budget} onChange={handleChange} className={inputClass}>
+                      <option value="">Choose one</option>
+                      {budgetRanges.map((range) => <option key={range} value={range}>{range}</option>)}
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="message" className={labelClass}>Message *</label>
                   <textarea
                     id="message"
                     name="message"
@@ -220,89 +127,51 @@ export default function Contact() {
                     rows={5}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 bg-slate-50 dark:bg-gray-900/50 border border-slate-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none text-slate-900 dark:text-white"
-                    placeholder="Tell us about your web design, mobile app, or business software needs and how we can help transform your digital presence..."
+                    className={`${inputClass} resize-none`}
+                    placeholder="What do you want to build, and who is it for?"
                   ></textarea>
                 </div>
-                
+
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-md font-medium text-white flex items-center justify-center w-full md:w-auto disabled:opacity-50"
+                  className="w-full md:w-auto px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-full font-semibold text-white flex items-center justify-center disabled:opacity-50 hover:shadow-lg hover:shadow-blue-500/30"
                 >
-                  {isSubmitting ? 'Sending...' : 'Send Message'} 
+                  {isSubmitting ? "Sending..." : "Send message"}
                   {!isSubmitting && <BsArrowRight className="ml-2" />}
                 </button>
               </form>
-            </motion.div>
-            
-            {/* Contact Information */}
-            <motion.div 
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="space-y-8"
-            >
-              <div>
-                <h2 className="text-2xl font-semibold mb-6 text-slate-800 dark:text-white">Contact Information</h2>
-                <p className="text-slate-600 dark:text-gray-300 mb-8">
-                  Ready to discuss your web design, mobile app development, or business software needs? Reach out to us directly to explore how we can help elevate your digital presence and streamline your operations.
-                </p>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="flex items-start space-x-4">
-                  <div className="bg-blue-500/20 p-3 rounded-full">
-                    <BsEnvelope className="text-blue-600 dark:text-blue-400 text-xl" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-medium text-slate-800 dark:text-gray-200">Email</h3>
-                    <p className="text-slate-600 dark:text-gray-400">
-                      <a href="mailto:nbridgemohan@gmail.com" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                        nbridgemohan@gmail.com
-                      </a>
-                    </p>
-                  </div>
-                </div>
-                
-                
-              </div>
-              
-              <div className="pt-8 border-t border-slate-200 dark:border-gray-700">
-                <h3 className="text-lg font-medium text-slate-800 dark:text-gray-200 mb-4">Business Hours</h3>
-                <p className="text-slate-600 dark:text-gray-400">
-                  We&apos;re available for consultations and support during business hours. 
-                  For urgent matters, please call or email us directly.
-                </p>
-              </div>
-              
+            </div>
 
-            </motion.div>
+            <aside className="lg:col-span-2 space-y-8">
+              <div className="flex items-start space-x-4">
+                <div className="bg-blue-500/20 p-3 rounded-full">
+                  <BsEnvelope className="text-blue-600 dark:text-blue-400 text-xl" />
+                </div>
+                <div>
+                  <h2 className="text-lg font-semibold text-slate-800 dark:text-gray-200">Prefer email?</h2>
+                  <a href={`mailto:${CONTACT_EMAIL}`} className="text-slate-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 break-all">
+                    {CONTACT_EMAIL}
+                  </a>
+                </div>
+              </div>
+
+              <div className="pt-8 border-t border-slate-200 dark:border-gray-700">
+                <h2 className="text-lg font-semibold text-slate-800 dark:text-gray-200 mb-3">See what we&apos;ve built</h2>
+                <ul className="space-y-2">
+                  {products.map((p) => (
+                    <li key={p.slug}>
+                      <Link href={`/work/${p.slug}`} className="text-slate-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">
+                        <span className="font-medium text-slate-800 dark:text-gray-200">{p.name}</span>: {p.tagline}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </aside>
           </div>
         </div>
       </div>
-      
-      {/* Footer */}
-      <footer className="bg-black/60 backdrop-blur-md py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text inline-block mb-6">
-              Bridgemohan Technologies Consulting
-            </Link>
-            <p className="text-gray-400 max-w-md mx-auto mb-8">
-              Professional IT Software Consulting Services to accelerate your digital transformation.
-            </p>
-            <div className="flex justify-center space-x-6 mb-8">
-              <a href="mailto:nbridgemohan@gmail.com" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <AiOutlineMail className="text-xl" />
-              </a>
-            </div>
-            <div className="text-sm text-gray-500">
-              &copy; {new Date().getFullYear()} Bridgemohan Technologies Consulting. All rights reserved.
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
+    </Layout>
   );
-} 
+}
