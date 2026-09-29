@@ -119,8 +119,8 @@ export interface StarterPackage {
 export const packages: StarterPackage[] = [
   {
     name: "AI chatbot setup",
-    priceFrom: null,
-    timeline: null,
+    priceFrom: "US$3,500",
+    timeline: "Typically 2–3 weeks, then US$450/month for hosting and support",
     description: "An AI assistant that answers your customers on WhatsApp and your website.",
     includes: [
       "Assistant set up with your business information",
@@ -132,8 +132,8 @@ export const packages: StarterPackage[] = [
   },
   {
     name: "Business web app MVP",
-    priceFrom: null,
-    timeline: null,
+    priceFrom: "US$15,000",
+    timeline: "Typically 8–12 weeks",
     description: "A first working version of your idea, ready to put in front of real users.",
     includes: [
       "Discovery workshop and written scope",
@@ -145,8 +145,8 @@ export const packages: StarterPackage[] = [
   },
   {
     name: "Inventory or HR system",
-    priceFrom: null,
-    timeline: null,
+    priceFrom: "US$20,000",
+    timeline: "Typically 10–14 weeks",
     description: "Replace spreadsheets with a system built around how your business already works.",
     includes: [
       "Stock or staff records in one place",
@@ -173,10 +173,10 @@ export const projectTypes = [
 // Update these ranges to match how you price work.
 export const budgetRanges = [
   "Not sure yet",
-  "Under US$2,500",
-  "US$2,500 – US$10,000",
-  "US$10,000 – US$25,000",
-  "US$25,000+",
+  "Under US$5,000",
+  "US$5,000 – US$15,000",
+  "US$15,000 – US$40,000",
+  "US$40,000+",
 ];
 
 // Reasons an overseas client can work with a studio in Trinidad. Keep every point true.

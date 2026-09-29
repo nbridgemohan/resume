@@ -144,7 +144,7 @@ export const products: Product[] = [
     icon: BsCart3,
     accent: "green",
     platform: "Android App",
-    status: "In Testing",
+    status: "Live",
     projectType: "Consumer web or mobile app",
     problem:
       "Grocery prices in T&T change constantly and vary between stores, but there is no easy way to see where an item is cheapest. Shoppers rely on flyers and guesswork.",
@@ -165,16 +165,16 @@ export const products: Product[] = [
       { group: "Quality", items: ["Firebase Crashlytics"] },
     ],
     highlights: [
-      "Closed testing on Google Play",
+      "Published on Google Play",
       "Real-time shared lists and offline-first receipt capture",
     ],
     metrics: [
-      { label: "Testers", value: null },
+      { label: "Installs (Sept 2026)", value: "100+" },
+      { label: "Monthly active users", value: "75" },
       { label: "Receipts scanned", value: null },
-      { label: "Prices tracked", value: null },
     ],
     screenshots: [],
-    beta: true,
+    link: { href: "https://play.google.com/store/apps/details?id=com.groceryhubtt.grocery_hub_tt", label: "Get it on Google Play" },
     seo: {
       title: "GroceryHubTT: grocery price comparison app for Trinidad | Bridgemohan Technologies",
       description:
