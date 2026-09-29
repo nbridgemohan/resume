@@ -118,14 +118,14 @@ export interface StarterPackage {
 
 export const packages: StarterPackage[] = [
   {
-    name: "AI chatbot setup",
+    name: "Custom AI chatbot",
     priceFrom: "US$3,500",
-    timeline: "Typically 2–3 weeks, then US$450/month for hosting and support",
-    description: "An AI assistant that answers your customers on WhatsApp and your website.",
+    timeline: "Typically 2–3 weeks, then a TTomni plan from US$149/month",
+    description: "An AI assistant built around your workflows and connected to the systems you already use. Need something standard? TTomni plans start at US$149/month.",
     includes: [
-      "Assistant set up with your business information",
-      "WhatsApp and website chat",
-      "Lead capture to your email",
+      "Assistant trained on your business information",
+      "WhatsApp, SMS and website chat",
+      "Connection to your booking system or CRM",
       "30 days of tuning after launch",
     ],
     projectType: "AI chatbot or assistant",
