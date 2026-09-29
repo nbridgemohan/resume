@@ -62,8 +62,8 @@ export default function Contact() {
   return (
     <Layout>
       <Seo
-        title="Book a Free Consultation | Bridgemohan Technologies, Trinidad and Tobago"
-        description="Tell us about your software project. AI chatbots, business tools, and web and mobile apps built in Trinidad and Tobago."
+        title="Book a Free Consultation | Bridgemohan Technologies"
+        description="Tell us about your software project. AI chatbots, business tools, and web and mobile apps for clients in the US, Europe and the Caribbean."
         path="/contact"
       />
 

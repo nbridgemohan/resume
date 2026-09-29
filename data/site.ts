@@ -7,7 +7,7 @@ export const CONTACT_EMAIL = "nbridgemohan@gmail.com";
 
 // Every number here must be true. Replace or add as real figures come in.
 export const stats = [
-  { number: "10+", label: "Years building software" },
+  { number: "15+", label: "Years building software" },
   { number: "4", label: "Products built in-house" },
   { number: "3", label: "AI-powered products" },
   { number: "Web + Android", label: "Platforms we ship on" },
@@ -56,7 +56,7 @@ export const services: Service[] = [
     title: "Consumer web and mobile apps",
     icon: BsPhone,
     accent: "green",
-    forWho: "Founders and brands launching an app or online store for customers in T&T and the Caribbean.",
+    forWho: "Founders and brands launching a mobile app, web app or online store.",
     deliver: [
       "Android, iOS and web apps from one Flutter codebase",
       "Accounts, payments and push notifications",
@@ -108,7 +108,7 @@ export const techStack = [
 
 export interface StarterPackage {
   name: string;
-  // e.g. "TT$15,000" or "US$2,500". Leave null to show "Fixed quote after a free call".
+  // e.g. "US$2,500". Leave null to show "Fixed quote after a free call".
   priceFrom: string | null;
   timeline: string | null;
   description: string;
@@ -173,8 +173,32 @@ export const projectTypes = [
 // Update these ranges to match how you price work.
 export const budgetRanges = [
   "Not sure yet",
-  "Under TT$10,000",
-  "TT$10,000 – TT$25,000",
-  "TT$25,000 – TT$75,000",
-  "TT$75,000+",
+  "Under US$2,500",
+  "US$2,500 – US$10,000",
+  "US$10,000 – US$25,000",
+  "US$25,000+",
+];
+
+// Reasons an overseas client can work with a studio in Trinidad. Keep every point true.
+export const whyUs = [
+  {
+    title: "Your working hours",
+    description:
+      "We're on UTC-4: the same hours as US Eastern for much of the year, and overlapping European afternoons. Calls happen during your day, not at midnight.",
+  },
+  {
+    title: "Proof before you hire",
+    description:
+      "Every service we offer is backed by a product we built and run ourselves. You can try them before you talk to us.",
+  },
+  {
+    title: "Senior-level work, nearshore rates",
+    description:
+      "15+ years building software, at a lower cost than a US or European agency, with the same tools and cloud platforms.",
+  },
+  {
+    title: "Security built in",
+    description:
+      "Encryption at rest, role-based access and secure sign-in are part of how we build, as in BankerPro.",
+  },
 ];

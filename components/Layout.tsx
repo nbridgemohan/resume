@@ -79,7 +79,7 @@ export function Layout({ children }: { children: ReactNode }) {
             Bridgemohan Technologies
           </Link>
           <p className="text-slate-600 dark:text-slate-400 max-w-xl mx-auto mb-6">
-            AI, fintech and consumer apps built in Trinidad &amp; Tobago, for clients at home and abroad.
+            AI, fintech and mobile apps for clients in the US, Europe and the Caribbean. Based in Trinidad &amp; Tobago.
           </p>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6 text-sm text-slate-600 dark:text-slate-400">
             {navLinks.map((link) => (

@@ -7,7 +7,7 @@ import { Seo } from "../components/Seo";
 import { BetaSignupModal } from "../components/BetaSignupModal";
 import { products, getProduct } from "../data/products";
 import { accents, statusClasses } from "../data/accents";
-import { stats, services, processSteps, techStack, packages, testimonials, SITE_URL, CONTACT_EMAIL } from "../data/site";
+import { stats, services, whyUs, processSteps, techStack, packages, testimonials, SITE_URL, CONTACT_EMAIL } from "../data/site";
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
@@ -15,9 +15,9 @@ const organizationJsonLd = {
   name: "Bridgemohan Technologies",
   url: SITE_URL,
   email: CONTACT_EMAIL,
-  description: "Software development company in Trinidad and Tobago building AI chatbots, fintech tools, and web and mobile apps.",
+  description: "Software development studio building AI chatbots, fintech tools, and web and mobile apps for clients in the US, Europe and the Caribbean.",
   address: { "@type": "PostalAddress", addressCountry: "TT" },
-  areaServed: ["Trinidad and Tobago", "Caribbean", "Worldwide"],
+  areaServed: ["United States", "Canada", "United Kingdom", "Europe", "Caribbean", "Trinidad and Tobago"],
   knowsAbout: ["Software development", "AI chatbots", "Mobile app development", "Web application development"],
 };
 
@@ -29,8 +29,8 @@ export default function Home() {
   return (
     <Layout>
       <Seo
-        title="Software Development in Trinidad | AI Chatbots & Apps | Bridgemohan Technologies"
-        description="Trinidad and Tobago software company building AI chatbots, fintech tools, and web and mobile apps. See four products we've built, then book a free consultation."
+        title="AI & App Development Studio | Nearshore for US & Europe | Bridgemohan Technologies"
+        description="Nearshore software studio in Trinidad and Tobago building AI chatbots, fintech tools, and web and mobile apps for clients in the US, Europe and the Caribbean. See four products we've built."
         path="/"
         jsonLd={organizationJsonLd}
       />
@@ -44,12 +44,12 @@ export default function Home() {
           className="text-center max-w-5xl mx-auto"
         >
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight tracking-tight">
-            <span className="text-slate-800 dark:text-white">We build AI, fintech and consumer apps for </span>
-            <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-500 text-transparent bg-clip-text">Caribbean businesses.</span>
+            <span className="text-slate-800 dark:text-white">We build AI, fintech and mobile apps </span>
+            <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-500 text-transparent bg-clip-text">for businesses worldwide.</span>
           </h1>
           <p className="text-2xl md:text-3xl font-semibold text-slate-700 dark:text-slate-200 mb-6">Here are four we&apos;ve built.</p>
           <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-10 max-w-3xl mx-auto leading-relaxed">
-            10+ years of software experience. Based in Trinidad &amp; Tobago, working with clients locally and internationally.
+            15+ years of software experience. Based in Trinidad &amp; Tobago, working with clients across the US, Europe and the Caribbean, on hours that overlap with yours.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -176,6 +176,25 @@ export default function Home() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Why us */}
+      <section id="why-us" className="py-20 md:py-24 px-4 scroll-mt-16">
+        <div className="max-w-7xl mx-auto">
+          <SectionHeader
+            eyebrow="Why work with us"
+            title="A nearshore team on your hours"
+            intro="Based in the Caribbean, working with clients in the US, Canada, the UK and Europe."
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {whyUs.map((item) => (
+              <div key={item.title} className="p-6 rounded-2xl bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700">
+                <h3 className="text-lg font-bold mb-2 text-slate-800 dark:text-white">{item.title}</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{item.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
