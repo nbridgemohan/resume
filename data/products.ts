@@ -47,7 +47,7 @@ export const products: Product[] = [
     name: "TTomni",
     tagline: "One AI assistant for WhatsApp, Telegram, SMS and web chat",
     summary:
-      "An AI customer-service assistant that answers customers on WhatsApp, Telegram, SMS and a website chat widget from one dashboard, built for Trinidad & Tobago businesses.",
+      "A done-for-you AI customer assistant that answers on WhatsApp, Telegram, SMS and website chat, captures leads and takes bookings, all managed from one dashboard.",
     icon: BsChatDots,
     accent: "blue",
     platform: "Web App",

@@ -1,35 +1,36 @@
 // Tailwind needs full class names at build time, so each accent spells them out.
+// Accents are used sparingly: a dot, an icon tint and a soft panel behind product visuals.
 export type Accent = "blue" | "purple" | "green" | "indigo";
 
-export const accents: Record<Accent, { card: string; icon: string; link: string; chip: string }> = {
+export const accents: Record<Accent, { dot: string; icon: string; panel: string; glow: string }> = {
   blue: {
-    card: "from-white to-blue-50 border-blue-200/50 hover:border-blue-400/70 dark:hover:border-blue-400/50",
-    icon: "bg-blue-100 dark:bg-blue-500/20 border-blue-300 dark:border-blue-400/30 text-blue-700 dark:text-blue-400",
-    link: "text-blue-700 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300",
-    chip: "bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300",
+    dot: "bg-sky-500",
+    icon: "text-sky-600 dark:text-sky-400",
+    panel: "bg-sky-50 dark:bg-ink-900",
+    glow: "bg-sky-400/40 dark:bg-sky-500/25",
   },
   purple: {
-    card: "from-white to-purple-50 border-purple-200/50 hover:border-purple-400/70 dark:hover:border-purple-400/50",
-    icon: "bg-purple-100 dark:bg-purple-500/20 border-purple-300 dark:border-purple-400/30 text-purple-700 dark:text-purple-400",
-    link: "text-purple-700 dark:text-purple-400 hover:text-purple-600 dark:hover:text-purple-300",
-    chip: "bg-purple-100 dark:bg-purple-500/20 text-purple-700 dark:text-purple-300",
+    dot: "bg-violet-500",
+    icon: "text-violet-600 dark:text-violet-400",
+    panel: "bg-violet-50 dark:bg-ink-900",
+    glow: "bg-violet-400/40 dark:bg-violet-500/25",
   },
   green: {
-    card: "from-white to-green-50 border-green-200/50 hover:border-green-400/70 dark:hover:border-green-400/50",
-    icon: "bg-green-100 dark:bg-green-500/20 border-green-300 dark:border-green-400/30 text-green-700 dark:text-green-400",
-    link: "text-green-700 dark:text-green-400 hover:text-green-600 dark:hover:text-green-300",
-    chip: "bg-green-100 dark:bg-green-500/20 text-green-700 dark:text-green-300",
+    dot: "bg-emerald-500",
+    icon: "text-emerald-600 dark:text-emerald-400",
+    panel: "bg-emerald-50 dark:bg-ink-900",
+    glow: "bg-emerald-400/40 dark:bg-emerald-500/25",
   },
   indigo: {
-    card: "from-white to-indigo-50 border-indigo-200/50 hover:border-indigo-400/70 dark:hover:border-indigo-400/50",
-    icon: "bg-indigo-100 dark:bg-indigo-500/20 border-indigo-300 dark:border-indigo-400/30 text-indigo-700 dark:text-indigo-400",
-    link: "text-indigo-700 dark:text-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-300",
-    chip: "bg-indigo-100 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300",
+    dot: "bg-brand-500",
+    icon: "text-brand-600 dark:text-brand-400",
+    panel: "bg-brand-50 dark:bg-ink-900",
+    glow: "bg-brand-400/40 dark:bg-brand-500/25",
   },
 };
 
 export const statusClasses: Record<string, string> = {
-  Live: "bg-green-100 dark:bg-green-500/20 text-green-700 dark:text-green-400 border-green-300 dark:border-green-400/30",
-  Pilot: "bg-purple-100 dark:bg-purple-500/20 text-purple-700 dark:text-purple-400 border-purple-300 dark:border-purple-400/30",
-  "In Testing": "bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400 border-amber-300 dark:border-amber-400/30",
+  Live: "text-emerald-700 bg-emerald-50 ring-emerald-600/20 dark:text-emerald-300 dark:bg-emerald-500/10 dark:ring-emerald-400/20",
+  Pilot: "text-violet-700 bg-violet-50 ring-violet-600/20 dark:text-violet-300 dark:bg-violet-500/10 dark:ring-violet-400/20",
+  "In Testing": "text-amber-700 bg-amber-50 ring-amber-600/20 dark:text-amber-300 dark:bg-amber-500/10 dark:ring-amber-400/20",
 };

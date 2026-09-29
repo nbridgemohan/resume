@@ -62,7 +62,7 @@ export function BetaSignupModal({ appName, onClose }: BetaSignupModalProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[60] flex items-center justify-center px-4 bg-slate-900/60 dark:bg-black/70 backdrop-blur-sm"
+          className="fixed inset-0 z-[60] flex items-center justify-center px-4 bg-ink-950/60 backdrop-blur-sm"
           onClick={handleClose}
         >
           <motion.div
@@ -71,28 +71,28 @@ export function BetaSignupModal({ appName, onClose }: BetaSignupModalProps) {
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.2 }}
             onClick={(e: React.MouseEvent) => e.stopPropagation()}
-            className="relative w-full max-w-md p-8 rounded-2xl bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-700 shadow-2xl"
+            className="relative w-full max-w-md rounded-3xl border border-ink-200 bg-white p-8 shadow-2xl dark:border-ink-800 dark:bg-ink-900"
           >
             <button
               onClick={handleClose}
               aria-label="Close"
-              className="absolute top-4 right-4 p-2 rounded-full text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors"
+              className="absolute right-4 top-4 rounded-full p-2 text-ink-500 hover:bg-ink-100 dark:text-ink-400 dark:hover:bg-ink-800"
             >
               <BsX className="text-xl" />
             </button>
 
             {submitSuccess ? (
               <div className="text-center py-6">
-                <BsCheckCircle className="text-4xl text-green-500 mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-2 text-slate-800 dark:text-white">Request Sent!</h3>
-                <p className="text-slate-600 dark:text-slate-400">
+                <BsCheckCircle className="mx-auto mb-4 text-4xl text-emerald-500" />
+                <h3 className="mb-2 font-display text-xl font-semibold text-ink-900 dark:text-white">Request sent</h3>
+                <p className="text-ink-600 dark:text-ink-400">
                   Thanks for your interest in {appName}. We&apos;ll reach out on WhatsApp with your beta access details soon.
                 </p>
               </div>
             ) : (
               <>
-                <h3 className="text-2xl font-bold mb-2 text-slate-800 dark:text-white">Join the {appName} Beta</h3>
-                <p className="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">
+                <h3 className="mb-2 font-display text-2xl font-semibold tracking-tight text-ink-900 dark:text-white">Join the {appName} beta</h3>
+                <p className="mb-6 text-sm leading-relaxed text-ink-600 dark:text-ink-400">
                   {appName} is currently in testing. Leave your details and we&apos;ll add you as a tester and follow up on WhatsApp.
                 </p>
 
@@ -104,7 +104,7 @@ export function BetaSignupModal({ appName, onClose }: BetaSignupModalProps) {
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <label htmlFor="beta-name" className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1">
+                    <label htmlFor="beta-name" className="mb-1.5 block text-sm font-medium text-ink-700 dark:text-ink-300">
                       Name *
                     </label>
                     <input
@@ -114,13 +114,13 @@ export function BetaSignupModal({ appName, onClose }: BetaSignupModalProps) {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 bg-slate-50 dark:bg-gray-800/50 border border-slate-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white"
+                      className="w-full rounded-xl border border-ink-200 bg-paper px-4 py-2.5 text-ink-900 placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-500/15 dark:border-ink-700 dark:bg-ink-950 dark:text-white"
                       placeholder="Your full name"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="beta-email" className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1">
+                    <label htmlFor="beta-email" className="mb-1.5 block text-sm font-medium text-ink-700 dark:text-ink-300">
                       Email *
                     </label>
                     <input
@@ -130,13 +130,13 @@ export function BetaSignupModal({ appName, onClose }: BetaSignupModalProps) {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 bg-slate-50 dark:bg-gray-800/50 border border-slate-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white"
+                      className="w-full rounded-xl border border-ink-200 bg-paper px-4 py-2.5 text-ink-900 placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-500/15 dark:border-ink-700 dark:bg-ink-950 dark:text-white"
                       placeholder="you@example.com"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="beta-whatsapp" className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1">
+                    <label htmlFor="beta-whatsapp" className="mb-1.5 block text-sm font-medium text-ink-700 dark:text-ink-300">
                       WhatsApp Number *
                     </label>
                     <input
@@ -146,7 +146,7 @@ export function BetaSignupModal({ appName, onClose }: BetaSignupModalProps) {
                       required
                       value={formData.whatsapp}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 bg-slate-50 dark:bg-gray-800/50 border border-slate-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white"
+                      className="w-full rounded-xl border border-ink-200 bg-paper px-4 py-2.5 text-ink-900 placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-500/15 dark:border-ink-700 dark:bg-ink-950 dark:text-white"
                       placeholder="+1 (868) 000-0000"
                     />
                   </div>
@@ -154,7 +154,7 @@ export function BetaSignupModal({ appName, onClose }: BetaSignupModalProps) {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-md font-semibold text-white flex items-center justify-center disabled:opacity-50 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300"
+                    className="flex w-full items-center justify-center rounded-full bg-ink-900 px-6 py-3 font-semibold text-white hover:bg-ink-700 disabled:opacity-50 dark:bg-white dark:text-ink-900 dark:hover:bg-ink-200"
                   >
                     {isSubmitting ? "Sending..." : "Request Beta Access"}
                     {!isSubmitting && <BsArrowRight className="ml-2" />}

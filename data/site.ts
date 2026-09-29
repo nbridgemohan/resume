@@ -4,17 +4,21 @@ import type { Accent } from "./accents";
 
 export const SITE_URL = "https://www.bridgemohan.com";
 export const CONTACT_EMAIL = "nbridgemohan@gmail.com";
+export const LINKEDIN_URL = "https://linkedin.com/in/bridgemohan";
+export const CONTRA_URL = "https://contra.com/nicholas_bridgemohan_2lj9tch8";
+export const TTOMNI_URL = "https://ttomni.app";
 
-// Every number here must be true. Replace or add as real figures come in.
+// Every number here must be true. `value` animates up from 0; `suffix` is appended.
 export const stats = [
-  { number: "15+", label: "Years building software" },
-  { number: "4", label: "Products built in-house" },
-  { number: "3", label: "AI-powered products" },
-  { number: "Web + Android", label: "Platforms we ship on" },
+  { value: 15, suffix: "+", label: "Years of engineering experience" },
+  { value: 4, suffix: "", label: "Products designed, built and launched in-house" },
+  { value: 3, suffix: "", label: "AI-powered products in production or pilot" },
+  { value: 100, suffix: "+", label: "Installs of GroceryHubTT on Google Play" },
 ];
 
 export interface Service {
   title: string;
+  tagline: string;
   icon: IconType;
   accent: Accent;
   forWho: string;
@@ -25,57 +29,61 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    title: "AI chatbots and assistants",
+    title: "AI assistants and chatbots",
+    tagline: "Answer every customer, on every channel, at any hour.",
     icon: BsChatDots,
     accent: "blue",
-    forWho: "Businesses answering the same customer questions on WhatsApp, Instagram or their website every day.",
+    forWho: "Clinics, agencies, retailers and service businesses fielding the same questions every day on WhatsApp, SMS or their website.",
     deliver: [
-      "An AI assistant trained on your products, prices and policies",
-      "WhatsApp, Telegram, SMS and website chat",
-      "Lead capture and booking requests",
-      "A dashboard to review conversations",
+      "An assistant grounded in your products, prices and policies",
+      "WhatsApp, SMS, Telegram and website chat",
+      "Lead capture and bookings into your existing tools",
+      "A dashboard to review every conversation",
     ],
     proofSlug: "ttomni",
     projectType: "AI chatbot or assistant",
   },
   {
-    title: "Finance and business tools",
+    title: "Fintech and business software",
+    tagline: "Turn documents, spreadsheets and manual work into software.",
     icon: BsGraphUp,
     accent: "purple",
-    forWho: "Companies running key processes on spreadsheets, paper or email: finance, reporting, HR/payroll or inventory.",
+    forWho: "Companies running finance, reporting, HR/payroll or inventory on spreadsheets, email and paper.",
     deliver: [
-      "Document and data processing with AI",
+      "AI document and data processing",
       "Dashboards, reports and exports",
       "HR/payroll and inventory systems",
-      "Secure logins, roles and encrypted data",
+      "Role-based access and encryption at rest",
     ],
     proofSlug: "bankerpro",
     projectType: "Finance or business tool",
   },
   {
-    title: "Consumer web and mobile apps",
+    title: "Web and mobile apps",
+    tagline: "From first sketch to the App Store, on one codebase.",
     icon: BsPhone,
     accent: "green",
-    forWho: "Founders and brands launching a mobile app, web app or online store.",
+    forWho: "Founders and product teams launching a new app, or replacing one that has outgrown its first version.",
     deliver: [
-      "Android, iOS and web apps from one Flutter codebase",
+      "iOS, Android and web from one Flutter codebase",
       "Accounts, payments and push notifications",
-      "E-commerce and ordering",
-      "Play Store and App Store release",
+      "Offline-first data and real-time sync",
+      "App Store and Google Play release",
     ],
     proofSlug: "groceryhubtt",
     projectType: "Consumer web or mobile app",
   },
   {
-    title: "Education and interactive apps",
+    title: "Learning and interactive products",
+    tagline: "Products people come back to.",
     icon: BsController,
     accent: "indigo",
-    forWho: "Schools, tutors, publishers and training providers who want learning people will actually finish.",
+    forWho: "EdTech companies, publishers, schools and training providers who need learning that people actually finish.",
     deliver: [
-      "Curriculum-aligned lessons and quizzes",
-      "Game mechanics: levels, rewards, progress",
+      "Curriculum-aligned lessons and practice",
+      "Game mechanics: levels, rewards, streaks",
       "Offline-friendly mobile apps",
-      "Progress reports for parents, teachers or admins",
+      "Progress analytics for parents, teachers or admins",
     ],
     proofSlug: "sea-quest-tt",
     projectType: "Education or interactive app",
@@ -84,10 +92,10 @@ export const services: Service[] = [
 
 export const processSteps: { title: string; description: string; icon: IconType }[] = [
   { title: "Discovery", description: "A free call to understand the problem, the users and what success looks like. You get a written scope and a quote.", icon: BsSearch },
-  { title: "Prototype", description: "Clickable screens or a working demo within the first weeks, so you can react to something real before the full build.", icon: BsVectorPen },
-  { title: "Build", description: "Development in short cycles with a demo at the end of each, so you always know where the project stands.", icon: BsCodeSlash },
-  { title: "Launch", description: "Deployment to the web, Google Play or the App Store, with analytics and error monitoring set up from day one.", icon: BsRocket },
-  { title: "Support", description: "Bug fixes, updates and new features after launch, on a monthly plan or as needed.", icon: BsLifePreserver },
+  { title: "Prototype", description: "Clickable screens or a working demo early on, so you react to something real before the full build.", icon: BsVectorPen },
+  { title: "Build", description: "Short development cycles with a demo at the end of each. You always know where the project stands.", icon: BsCodeSlash },
+  { title: "Launch", description: "Release to the web, Google Play or the App Store, with analytics and error monitoring from day one.", icon: BsRocket },
+  { title: "Support", description: "Fixes, updates and new features after launch, on a monthly plan or as needed.", icon: BsLifePreserver },
 ];
 
 // Technologies used across the portfolio products.
@@ -114,14 +122,15 @@ export interface StarterPackage {
   description: string;
   includes: string[];
   projectType: string;
+  featured?: boolean;
 }
 
 export const packages: StarterPackage[] = [
   {
-    name: "Custom AI chatbot",
+    name: "Custom AI assistant",
     priceFrom: "US$3,500",
-    timeline: "Typically 2–3 weeks, then a TTomni plan from US$149/month",
-    description: "An AI assistant built around your workflows and connected to the systems you already use. Need something standard? TTomni plans start at US$149/month.",
+    timeline: "2–3 weeks, then a TTomni plan from US$149/month",
+    description: "An AI assistant built around your workflows and connected to the systems you already use.",
     includes: [
       "Assistant trained on your business information",
       "WhatsApp, SMS and website chat",
@@ -131,32 +140,70 @@ export const packages: StarterPackage[] = [
     projectType: "AI chatbot or assistant",
   },
   {
-    name: "Business web app MVP",
+    name: "Product MVP",
     priceFrom: "US$15,000",
     timeline: "Typically 8–12 weeks",
-    description: "A first working version of your idea, ready to put in front of real users.",
+    description: "A first working version of your web or mobile product, ready for real users and investors.",
     includes: [
       "Discovery workshop and written scope",
-      "Core features, user accounts and admin area",
-      "Hosting and deployment",
-      "Handover and training",
+      "Core features, accounts and admin area",
+      "AI features where they add value",
+      "Deployment, handover and source code",
     ],
-    projectType: "Finance or business tool",
+    projectType: "Consumer web or mobile app",
+    featured: true,
   },
   {
-    name: "Inventory or HR system",
+    name: "Operations system",
     priceFrom: "US$20,000",
     timeline: "Typically 10–14 weeks",
-    description: "Replace spreadsheets with a system built around how your business already works.",
+    description: "Inventory, HR or back-office software that replaces spreadsheets and fits how your team works.",
     includes: [
-      "Stock or staff records in one place",
-      "Reports and exports",
+      "Workflows mapped and scoped",
+      "Reports, dashboards and exports",
       "Role-based access for your team",
       "Data migration from your spreadsheets",
     ],
     projectType: "Finance or business tool",
   },
 ];
+
+// Reasons an overseas client can work with a studio in Trinidad. Keep every point true.
+export const whyUs = [
+  {
+    title: "Your working hours",
+    description:
+      "We're on UTC-4: the same hours as US Eastern for much of the year, with a solid overlap with European afternoons. Calls happen during your day.",
+  },
+  {
+    title: "Proof before you hire",
+    description:
+      "Every service we offer is backed by a product our team designed, built and runs. You can try them before you talk to us.",
+  },
+  {
+    title: "Senior team, nearshore rates",
+    description:
+      "15+ years of engineering experience, at a lower cost than a US or European agency, on the same modern stack.",
+  },
+  {
+    title: "Security by default",
+    description:
+      "Encryption at rest, role-based access and secure sign-in are part of how we build, not add-ons.",
+  },
+];
+
+export const about = {
+  intro:
+    "Bridgemohan Technologies is a software studio based in Port of Spain, Trinidad and Tobago. Our team designs, builds and runs production software: AI assistants, fintech tools, and web and mobile apps.",
+  body:
+    "We started by building products of our own, because the best way to prove we can ship is to ship. Today we bring the same team, stack and standards to client projects in the US, Europe and the Caribbean.",
+  principles: [
+    { title: "Small, senior team", description: "The people you meet on the first call are the people who build your product." },
+    { title: "Fixed scope, clear price", description: "Written scope and a quote before work starts. No open-ended billing surprises." },
+    { title: "You own everything", description: "Source code, designs and accounts are yours from day one." },
+  ],
+  leader: { name: "Nicholas Bridgemohan", role: "Founder & Principal Software Architect" },
+};
 
 // Add real quotes only. The section is hidden while this list is empty.
 export const testimonials: { quote: string; name: string; role: string }[] = [];
@@ -177,28 +224,4 @@ export const budgetRanges = [
   "US$5,000 – US$15,000",
   "US$15,000 – US$40,000",
   "US$40,000+",
-];
-
-// Reasons an overseas client can work with a studio in Trinidad. Keep every point true.
-export const whyUs = [
-  {
-    title: "Your working hours",
-    description:
-      "We're on UTC-4: the same hours as US Eastern for much of the year, and overlapping European afternoons. Calls happen during your day, not at midnight.",
-  },
-  {
-    title: "Proof before you hire",
-    description:
-      "Every service we offer is backed by a product we built and run ourselves. You can try them before you talk to us.",
-  },
-  {
-    title: "Senior-level work, nearshore rates",
-    description:
-      "15+ years building software, at a lower cost than a US or European agency, with the same tools and cloud platforms.",
-  },
-  {
-    title: "Security built in",
-    description:
-      "Encryption at rest, role-based access and secure sign-in are part of how we build, as in BankerPro.",
-  },
 ];

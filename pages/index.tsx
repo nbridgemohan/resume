@@ -1,13 +1,16 @@
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { BsArrowRight, BsArrowDown, BsCheck } from "react-icons/bs";
-import { Layout, SectionHeader } from "../components/Layout";
+import { BsArrowRight, BsArrowUpRight, BsCheck2 } from "react-icons/bs";
+import { Layout, SectionHeader, Eyebrow } from "../components/Layout";
 import { Seo } from "../components/Seo";
+import { ChatDemo } from "../components/ChatDemo";
+import { TechMarquee } from "../components/TechMarquee";
 import { BetaSignupModal } from "../components/BetaSignupModal";
-import { products, getProduct } from "../data/products";
+import { useReveal, useHeroEntrance } from "../components/useReveal";
+import { products, getProduct, type Product } from "../data/products";
 import { accents, statusClasses } from "../data/accents";
-import { stats, services, whyUs, processSteps, techStack, packages, testimonials, SITE_URL, CONTACT_EMAIL } from "../data/site";
+import { stats, services, whyUs, processSteps, packages, about, testimonials, SITE_URL, CONTACT_EMAIL, LINKEDIN_URL, TTOMNI_URL } from "../data/site";
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
@@ -15,161 +18,127 @@ const organizationJsonLd = {
   name: "Bridgemohan Technologies",
   url: SITE_URL,
   email: CONTACT_EMAIL,
-  description: "Software development studio building AI chatbots, fintech tools, and web and mobile apps for clients in the US, Europe and the Caribbean.",
-  address: { "@type": "PostalAddress", addressCountry: "TT" },
-  areaServed: ["United States", "Canada", "United Kingdom", "Europe", "Caribbean", "Trinidad and Tobago"],
-  knowsAbout: ["Software development", "AI chatbots", "Mobile app development", "Web application development"],
+  description: "Software studio building AI assistants, fintech tools, and web and mobile apps for companies in the US, Europe and the Caribbean.",
+  address: { "@type": "PostalAddress", addressLocality: "Port of Spain", addressCountry: "TT" },
+  areaServed: ["United States", "Canada", "United Kingdom", "Europe", "Caribbean"],
+  knowsAbout: ["Software development", "AI chatbots", "Mobile app development", "Web application development", "Fintech"],
 };
 
 const contactHref = (projectType: string) => `/contact?type=${encodeURIComponent(projectType)}`;
+const heroLines = [["We", "build", "AI", "products"], ["that", "ship."]];
 
 export default function Home() {
   const [betaApp, setBetaApp] = useState<string | null>(null);
+  useHeroEntrance();
+  useReveal();
 
   return (
     <Layout>
       <Seo
-        title="AI & App Development Studio | Nearshore for US & Europe | Bridgemohan Technologies"
-        description="Nearshore software studio in Trinidad and Tobago building AI chatbots, fintech tools, and web and mobile apps for clients in the US, Europe and the Caribbean. See four products we've built."
+        title="Bridgemohan Technologies | AI & Software Development Studio for US & European Companies"
+        description="A senior software studio building AI assistants, fintech tools, and web and mobile apps for companies in the US, Europe and the Caribbean. See four products we've launched."
         path="/"
         jsonLd={organizationJsonLd}
       />
 
       {/* Hero */}
-      <section className="px-4 pt-32 pb-20 md:pt-44 md:pb-28">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center max-w-5xl mx-auto"
-        >
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight tracking-tight">
-            <span className="text-slate-800 dark:text-white">We build AI, fintech and mobile apps </span>
-            <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-500 text-transparent bg-clip-text">for businesses worldwide.</span>
-          </h1>
-          <p className="text-2xl md:text-3xl font-semibold text-slate-700 dark:text-slate-200 mb-6">Here are four we&apos;ve built.</p>
-          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-10 max-w-3xl mx-auto leading-relaxed">
-            15+ years of software experience. Based in Trinidad &amp; Tobago, working with clients across the US, Europe and the Caribbean, on hours that overlap with yours.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link href="/contact" className="w-full sm:w-auto inline-flex justify-center items-center px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-bold text-lg hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-300">
-              Book a free consultation <BsArrowRight className="ml-3" />
-            </Link>
-            <a href="#work" className="w-full sm:w-auto inline-flex justify-center items-center px-8 py-4 rounded-full border-2 border-slate-300 dark:border-white/20 text-slate-700 dark:text-white font-semibold text-lg hover:bg-slate-100/50 dark:hover:bg-white/10 transition-all duration-300">
-              See our work <BsArrowDown className="ml-3" />
-            </a>
+      <section className="relative overflow-hidden px-4 sm:px-6 pt-32 pb-20 md:pt-40 md:pb-28">
+        <div className="absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_75%)]" aria-hidden="true" />
+        <div className="relative mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1.15fr_0.85fr]">
+          <div>
+            <div data-hero><Eyebrow>Software studio · Port of Spain · UTC-4</Eyebrow></div>
+            <h1 className="mt-6 font-display text-[2.9rem] font-semibold leading-[1.02] tracking-tightest text-ink-900 sm:text-6xl lg:text-[5.2rem] dark:text-white">
+              {heroLines.map((line, li) => (
+                <span key={li} className="block">
+                  {line.map((word, wi) => (
+                    <span key={wi} className="inline-block overflow-hidden pb-2 align-bottom">
+                      <span data-hero-word className={`inline-block ${li === 1 ? "text-brand-600 dark:text-brand-400" : ""}`}>
+                        {word}
+                        {wi < line.length - 1 ? " " : ""}
+                      </span>
+                    </span>
+                  ))}
+                </span>
+              ))}
+            </h1>
+            <p data-hero className="mt-6 max-w-xl text-lg leading-relaxed text-ink-600 md:text-xl dark:text-ink-300">
+              Bridgemohan Technologies is a software studio building AI assistants, fintech tools and mobile apps for companies in the US, Europe and the Caribbean. We&apos;ve launched four products of our own, so you can see our work before you hire us.
+            </p>
+            <div data-hero className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <Link href="/contact" className="group inline-flex items-center justify-center rounded-full bg-ink-900 px-7 py-3.5 font-semibold text-white hover:bg-ink-700 dark:bg-white dark:text-ink-900 dark:hover:bg-ink-200">
+                Book a free consultation <BsArrowRight className="ml-2 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+              <a href="#work" className="inline-flex items-center justify-center rounded-full border border-ink-300 px-7 py-3.5 font-semibold text-ink-800 hover:border-ink-900 dark:border-ink-700 dark:text-ink-100 dark:hover:border-ink-300">
+                See our work
+              </a>
+            </div>
+            <ul data-hero className="mt-9 flex flex-wrap gap-x-6 gap-y-2 font-mono text-xs text-ink-500 dark:text-ink-400">
+              {["Senior team", "Fixed-scope quotes", "US & EU working hours"].map((item) => (
+                <li key={item} className="flex items-center gap-1.5"><BsCheck2 className="text-brand-600 dark:text-brand-400" />{item}</li>
+              ))}
+            </ul>
           </div>
-        </motion.div>
+          <div data-hero>
+            <ChatDemo />
+          </div>
+        </div>
       </section>
 
-      {/* Proof numbers */}
-      <section className="py-12 px-4 border-y border-slate-200/60 dark:border-white/10 bg-slate-100/30 dark:bg-black/20">
-        <div className="max-w-6xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="text-2xl md:text-4xl font-black text-slate-800 dark:text-white mb-1">{stat.number}</div>
-              <div className="text-sm md:text-base text-slate-600 dark:text-slate-400 font-medium">{stat.label}</div>
-            </div>
-          ))}
+      {/* Tech */}
+      <section className="border-y border-ink-200 px-4 sm:px-6 py-8 dark:border-ink-800">
+        <div className="mx-auto flex max-w-6xl flex-col gap-5 md:flex-row md:items-center">
+          <p className="shrink-0 font-mono text-xs uppercase tracking-[0.14em] text-ink-400 md:w-40">Our stack</p>
+          <TechMarquee />
         </div>
       </section>
 
       {/* Work */}
-      <section id="work" className="py-20 md:py-24 px-4 scroll-mt-16">
-        <div className="max-w-7xl mx-auto">
+      <section id="work" className="scroll-mt-20 px-4 sm:px-6 py-24 md:py-32">
+        <div className="mx-auto max-w-6xl">
           <SectionHeader
-            eyebrow="Our work"
-            title="Products we've built"
-            intro="We design, build and run our own products. Each one is a working example of what we can build for you."
+            eyebrow="Selected work"
+            title="Proof, not promises."
+            intro="Four products our team designed, built and launched: AI, fintech, consumer and education. Each one is a working example of what we can build for you."
           />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {products.map((product, index) => {
-              const accent = accents[product.accent];
-              return (
-                <motion.div
-                  key={product.slug}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.08 }}
-                  className={`p-6 md:p-8 rounded-2xl bg-gradient-to-br dark:from-gray-800/60 dark:to-gray-900/60 dark:border-gray-600/30 border shadow-lg dark:shadow-none flex flex-col ${accent.card}`}
-                >
-                  <div className="flex items-start justify-between mb-5">
-                    <div className={`p-4 rounded-2xl border w-14 h-14 flex items-center justify-center ${accent.icon}`}>
-                      <product.icon className="text-2xl" />
-                    </div>
-                    <div className="flex flex-col items-end gap-2">
-                      <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">{product.platform}</span>
-                      <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${statusClasses[product.status]}`}>{product.status}</span>
-                    </div>
-                  </div>
-                  <h3 className="text-2xl font-bold mb-1 text-slate-800 dark:text-white">{product.name}</h3>
-                  <p className="text-sm font-medium mb-3 text-slate-500 dark:text-slate-400">{product.tagline}</p>
-                  <p className="text-slate-600 dark:text-slate-400 mb-5 leading-relaxed flex-grow">{product.summary}</p>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {product.stack.flatMap((s) => s.items).slice(0, 4).map((tech) => (
-                      <span key={tech} className={`px-2.5 py-1 rounded-md text-xs font-medium ${accent.chip}`}>{tech}</span>
-                    ))}
-                  </div>
-                  <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-                    <Link href={`/work/${product.slug}`} className={`inline-flex items-center font-semibold ${accent.link}`}>
-                      Read the case study <BsArrowRight className="ml-2" />
-                    </Link>
-                    {product.beta ? (
-                      <button onClick={() => setBetaApp(product.name)} className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200">
-                        Join the beta
-                      </button>
-                    ) : product.link ? (
-                      <a href={product.link.href} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200">
-                        {product.link.label} ↗
-                      </a>
-                    ) : null}
-                  </div>
-                </motion.div>
-              );
-            })}
+          <div className="space-y-6 md:space-y-8">
+            {products.map((product, index) => (
+              <ProductRow key={product.slug} product={product} index={index} onBeta={setBetaApp} />
+            ))}
           </div>
         </div>
       </section>
 
       {/* Services */}
-      <section id="services" className="py-20 md:py-24 px-4 bg-slate-50/60 dark:bg-slate-900/40 scroll-mt-16">
-        <div className="max-w-7xl mx-auto">
+      <section id="services" className="scroll-mt-20 border-t border-ink-200 bg-white px-4 sm:px-6 py-24 md:py-32 dark:border-ink-800 dark:bg-ink-900/40">
+        <div className="mx-auto max-w-6xl">
           <SectionHeader
             eyebrow="Services"
-            title="What we can build for you"
-            intro="Every service is backed by a product we've already built, so you can see the work before you hire us."
+            title="What we build."
+            intro="Four practice areas, each backed by a product we already run in production or pilot."
           />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          <div className="grid gap-px overflow-hidden rounded-2xl border border-ink-200 bg-ink-200 md:grid-cols-2 dark:border-ink-800 dark:bg-ink-800">
             {services.map((service) => {
-              const accent = accents[service.accent];
               const proof = getProduct(service.proofSlug);
               return (
-                <div key={service.title} className="p-6 md:p-8 rounded-2xl bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700 shadow-sm flex flex-col">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className={`p-3 rounded-xl border w-12 h-12 flex items-center justify-center shrink-0 ${accent.icon}`}>
-                      <service.icon className="text-xl" />
-                    </div>
-                    <h3 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-white">{service.title}</h3>
-                  </div>
-                  <p className="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400 mb-1">Who it&apos;s for</p>
-                  <p className="text-slate-600 dark:text-slate-300 mb-4">{service.forWho}</p>
-                  <p className="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400 mb-2">What we deliver</p>
-                  <ul className="space-y-2 mb-6 flex-grow">
+                <div key={service.title} data-reveal className="flex flex-col bg-white p-8 md:p-10 dark:bg-ink-950">
+                  <service.icon className={`h-6 w-6 ${accents[service.accent].icon}`} />
+                  <h3 className="mt-6 font-display text-2xl font-semibold tracking-tight text-ink-900 dark:text-white">{service.title}</h3>
+                  <p className="mt-2 text-lg text-ink-600 dark:text-ink-300">{service.tagline}</p>
+                  <p className="mt-5 text-sm leading-relaxed text-ink-500 dark:text-ink-400"><span className="font-semibold text-ink-700 dark:text-ink-200">For </span>{service.forWho.charAt(0).toLowerCase() + service.forWho.slice(1)}</p>
+                  <ul className="mt-5 flex-grow space-y-2">
                     {service.deliver.map((item) => (
-                      <li key={item} className="flex items-start text-slate-600 dark:text-slate-300">
-                        <BsCheck className="text-green-600 dark:text-green-400 mr-2 mt-1 shrink-0" />{item}
+                      <li key={item} className="flex items-start gap-2.5 text-sm text-ink-700 dark:text-ink-200">
+                        <BsCheck2 className="mt-0.5 shrink-0 text-brand-600 dark:text-brand-400" />{item}
                       </li>
                     ))}
                   </ul>
-                  <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-4 border-t border-slate-200 dark:border-gray-700">
+                  <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-semibold">
                     {proof && (
-                      <Link href={`/work/${proof.slug}`} className={`inline-flex items-center font-semibold ${accent.link}`}>
-                        See {proof.name} <BsArrowRight className="ml-2" />
+                      <Link href={`/work/${proof.slug}`} className="group inline-flex items-center text-ink-900 dark:text-white">
+                        Case study: {proof.name} <BsArrowRight className="ml-1.5 transition-transform group-hover:translate-x-0.5" />
                       </Link>
                     )}
-                    <Link href={contactHref(service.projectType)} className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200">
+                    <Link href={contactHref(service.projectType)} className="text-ink-500 hover:text-ink-900 dark:text-ink-400 dark:hover:text-white">
                       Discuss a project
                     </Link>
                   </div>
@@ -180,89 +149,143 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Numbers */}
+      <section className="relative overflow-hidden bg-ink-950 px-4 sm:px-6 py-20 text-white">
+        <div className="absolute inset-0 bg-grid-dark opacity-60" aria-hidden="true" />
+        <div className="relative mx-auto grid max-w-6xl grid-cols-2 gap-10 lg:grid-cols-4">
+          {stats.map((stat) => (
+            <div key={stat.label} data-reveal>
+              <p className="font-display text-5xl font-semibold tracking-tight md:text-6xl">
+                <span data-count={stat.value} data-suffix={stat.suffix}>{stat.value}{stat.suffix}</span>
+              </p>
+              <p className="mt-3 max-w-[14rem] text-sm leading-relaxed text-ink-400">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Why us */}
-      <section id="why-us" className="py-20 md:py-24 px-4 scroll-mt-16">
-        <div className="max-w-7xl mx-auto">
+      <section id="why-us" className="scroll-mt-20 px-4 sm:px-6 py-24 md:py-32">
+        <div className="mx-auto max-w-6xl">
           <SectionHeader
             eyebrow="Why work with us"
-            title="A nearshore team on your hours"
-            intro="Based in the Caribbean, working with clients in the US, Canada, the UK and Europe."
+            title="A nearshore team on your hours."
+            intro="The quality you'd expect from a US or European studio, from a team whose working day overlaps yours."
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {whyUs.map((item) => (
-              <div key={item.title} className="p-6 rounded-2xl bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700">
-                <h3 className="text-lg font-bold mb-2 text-slate-800 dark:text-white">{item.title}</h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{item.description}</p>
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+            {whyUs.map((item, i) => (
+              <div key={item.title} data-reveal className="border-t border-ink-900 pt-6 dark:border-white">
+                <p className="font-mono text-xs text-ink-400">0{i + 1}</p>
+                <h3 className="mt-3 font-display text-xl font-semibold tracking-tight text-ink-900 dark:text-white">{item.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-ink-500 dark:text-ink-400">{item.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Tech stack */}
-      <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto text-center">
-          <p className="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400 mb-6">Technologies in our products</p>
-          <div className="flex flex-wrap justify-center gap-3">
-            {techStack.map((tech) => (
-              <span key={tech} className="px-4 py-2 rounded-full bg-white dark:bg-gray-800/60 border border-slate-200 dark:border-gray-700 text-slate-700 dark:text-slate-200 text-sm font-medium">
-                {tech}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* How we work */}
-      <section id="process" className="py-20 md:py-24 px-4 bg-slate-50/60 dark:bg-slate-900/40 scroll-mt-16">
-        <div className="max-w-7xl mx-auto">
-          <SectionHeader eyebrow="How we work" title="From first call to launch, and after" />
-          <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+      {/* Process */}
+      <section id="process" className="scroll-mt-20 border-t border-ink-200 bg-white px-4 sm:px-6 py-24 md:py-32 dark:border-ink-800 dark:bg-ink-900/40">
+        <div className="mx-auto max-w-6xl">
+          <SectionHeader eyebrow="How we work" title="From first call to launch, and after." />
+          <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {processSteps.map((step, index) => (
-              <li key={step.title} className="p-6 rounded-2xl bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white text-sm font-bold flex items-center justify-center">{index + 1}</span>
-                  <step.icon className="text-xl text-blue-600 dark:text-blue-400" />
+              <li key={step.title} data-reveal className="rounded-2xl border border-ink-200 bg-paper p-6 dark:border-ink-800 dark:bg-ink-950">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs text-ink-400">Step {index + 1}</span>
+                  <step.icon className="h-5 w-5 text-brand-600 dark:text-brand-400" />
                 </div>
-                <h3 className="text-lg font-bold mb-2 text-slate-800 dark:text-white">{step.title}</h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{step.description}</p>
+                <h3 className="mt-6 font-display text-lg font-semibold text-ink-900 dark:text-white">{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-500 dark:text-ink-400">{step.description}</p>
               </li>
             ))}
           </ol>
         </div>
       </section>
 
-      {/* Starter packages */}
-      <section id="packages" className="py-20 md:py-24 px-4 scroll-mt-16">
-        <div className="max-w-7xl mx-auto">
+      {/* Pricing */}
+      <section id="pricing" className="scroll-mt-20 px-4 sm:px-6 py-24 md:py-32">
+        <div className="mx-auto max-w-6xl">
           <SectionHeader
-            eyebrow="Starter packages"
-            title="A clear first step"
-            intro="Fixed-scope packages for the projects we're asked about most. Need something different? We'll scope it with you."
+            eyebrow="Pricing"
+            title="Clear starting points."
+            intro="Fixed-scope packages for the projects we're asked about most. Every project starts with a free call and a written quote."
           />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid gap-6 lg:grid-cols-3">
             {packages.map((pkg) => (
-              <div key={pkg.name} className="p-6 md:p-8 rounded-2xl bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700 shadow-sm flex flex-col">
-                <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-2">{pkg.name}</h3>
-                <p className="text-slate-600 dark:text-slate-400 mb-4">{pkg.description}</p>
-                <div className="mb-5">
-                  {pkg.priceFrom ? (
-                    <p className="text-slate-800 dark:text-white"><span className="text-sm text-slate-500 dark:text-slate-400">from </span><span className="text-3xl font-black">{pkg.priceFrom}</span></p>
-                  ) : (
-                    <p className="text-lg font-semibold text-slate-800 dark:text-white">Fixed quote after a free call</p>
-                  )}
-                  {pkg.timeline && <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">{pkg.timeline}</p>}
+              <div
+                key={pkg.name}
+                data-reveal
+                className={`flex flex-col rounded-2xl p-8 ${
+                  pkg.featured
+                    ? "bg-ink-950 text-white ring-1 ring-ink-950 dark:bg-white dark:text-ink-900 dark:ring-white"
+                    : "border border-ink-200 bg-white dark:border-ink-800 dark:bg-ink-900/60"
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <h3 className="font-display text-xl font-semibold">{pkg.name}</h3>
+                  {pkg.featured && <span className="rounded-full bg-brand-500 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wide text-white">Popular</span>}
                 </div>
-                <ul className="space-y-2 mb-6 flex-grow">
+                <p className={`mt-3 text-sm leading-relaxed ${pkg.featured ? "text-ink-300 dark:text-ink-600" : "text-ink-500 dark:text-ink-400"}`}>{pkg.description}</p>
+                <p className="mt-8">
+                  <span className={`text-sm ${pkg.featured ? "text-ink-400 dark:text-ink-500" : "text-ink-500"}`}>From </span>
+                  <span className="font-display text-4xl font-semibold tracking-tight">{pkg.priceFrom ?? "Custom"}</span>
+                </p>
+                {pkg.timeline && <p className={`mt-1 text-sm ${pkg.featured ? "text-ink-400 dark:text-ink-500" : "text-ink-500"}`}>{pkg.timeline}</p>}
+                <ul className="mt-8 flex-grow space-y-3">
                   {pkg.includes.map((item) => (
-                    <li key={item} className="flex items-start text-sm text-slate-600 dark:text-slate-300">
-                      <BsCheck className="text-green-600 dark:text-green-400 mr-2 mt-0.5 shrink-0" />{item}
+                    <li key={item} className="flex items-start gap-2.5 text-sm">
+                      <BsCheck2 className="mt-0.5 shrink-0 text-brand-500" />{item}
                     </li>
                   ))}
                 </ul>
-                <Link href={contactHref(pkg.projectType)} className="inline-flex justify-center items-center px-6 py-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-semibold hover:shadow-lg hover:shadow-blue-500/30">
-                  Get started <BsArrowRight className="ml-2" />
+                <Link
+                  href={contactHref(pkg.projectType)}
+                  className={`mt-8 inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold ${
+                    pkg.featured
+                      ? "bg-white text-ink-900 hover:bg-ink-200 dark:bg-ink-900 dark:text-white dark:hover:bg-ink-700"
+                      : "bg-ink-900 text-white hover:bg-ink-700 dark:bg-white dark:text-ink-900 dark:hover:bg-ink-200"
+                  }`}
+                >
+                  Get a quote
                 </Link>
+              </div>
+            ))}
+          </div>
+          <p data-reveal className="mt-8 text-center text-sm text-ink-500 dark:text-ink-400">
+            Just need a standard AI assistant?{" "}
+            <a href={TTOMNI_URL} target="_blank" rel="noopener noreferrer" className="font-semibold text-ink-900 underline decoration-ink-300 underline-offset-4 hover:decoration-ink-900 dark:text-white">
+              TTomni plans start at US$149/month
+            </a>
+            .
+          </p>
+        </div>
+      </section>
+
+      {/* About */}
+      <section id="about" className="scroll-mt-20 border-t border-ink-200 bg-white px-4 sm:px-6 py-24 md:py-32 dark:border-ink-800 dark:bg-ink-900/40">
+        <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-2">
+          <div data-reveal>
+            <Eyebrow>About us</Eyebrow>
+            <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink-900 md:text-5xl md:leading-[1.05] dark:text-white">A studio that builds its own products.</h2>
+            <p className="mt-6 text-lg leading-relaxed text-ink-600 dark:text-ink-300">{about.intro}</p>
+            <p className="mt-4 text-lg leading-relaxed text-ink-600 dark:text-ink-300">{about.body}</p>
+            <div className="mt-8 flex items-center gap-4 rounded-2xl border border-ink-200 p-5 dark:border-ink-800">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-ink-900 font-display font-semibold text-white dark:bg-white dark:text-ink-900">NB</span>
+              <div className="flex-grow">
+                <p className="font-semibold text-ink-900 dark:text-white">{about.leader.name}</p>
+                <p className="text-sm text-ink-500 dark:text-ink-400">{about.leader.role}</p>
+              </div>
+              <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm font-semibold text-ink-700 hover:text-ink-900 dark:text-ink-300 dark:hover:text-white">
+                LinkedIn <BsArrowUpRight className="h-3 w-3" />
+              </a>
+            </div>
+          </div>
+          <div className="space-y-4 lg:pt-12">
+            {about.principles.map((p) => (
+              <div key={p.title} data-reveal className="rounded-2xl border border-ink-200 bg-paper p-6 dark:border-ink-800 dark:bg-ink-950">
+                <h3 className="font-display text-lg font-semibold text-ink-900 dark:text-white">{p.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-500 dark:text-ink-400">{p.description}</p>
               </div>
             ))}
           </div>
@@ -271,14 +294,14 @@ export default function Home() {
 
       {/* Testimonials: hidden until there is at least one real quote */}
       {testimonials.length > 0 && (
-        <section className="py-20 md:py-24 px-4 bg-slate-50/60 dark:bg-slate-900/40">
-          <div className="max-w-6xl mx-auto">
-            <SectionHeader eyebrow="Feedback" title="What people say" />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <section className="px-4 sm:px-6 py-24">
+          <div className="mx-auto max-w-6xl">
+            <SectionHeader eyebrow="Feedback" title="What people say." />
+            <div className="grid gap-6 md:grid-cols-2">
               {testimonials.map((t) => (
-                <figure key={t.name} className="p-6 md:p-8 rounded-2xl bg-white dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700">
-                  <blockquote className="text-lg text-slate-700 dark:text-slate-200 mb-4">&ldquo;{t.quote}&rdquo;</blockquote>
-                  <figcaption className="text-sm text-slate-500 dark:text-slate-400"><span className="font-semibold text-slate-700 dark:text-slate-200">{t.name}</span>, {t.role}</figcaption>
+                <figure key={t.name} data-reveal className="rounded-2xl border border-ink-200 p-8 dark:border-ink-800">
+                  <blockquote className="text-lg text-ink-800 dark:text-ink-100">&ldquo;{t.quote}&rdquo;</blockquote>
+                  <figcaption className="mt-4 text-sm text-ink-500"><span className="font-semibold text-ink-800 dark:text-ink-100">{t.name}</span>, {t.role}</figcaption>
                 </figure>
               ))}
             </div>
@@ -286,20 +309,78 @@ export default function Home() {
         </section>
       )}
 
-      {/* Final CTA */}
-      <section className="py-20 md:py-24 px-4">
-        <div className="max-w-4xl mx-auto text-center p-8 md:p-12 rounded-3xl bg-gradient-to-br from-white/90 to-blue-50/90 dark:from-gray-800/60 dark:to-gray-900/60 border border-blue-200/50 dark:border-gray-600/30 shadow-xl dark:shadow-none">
-          <h2 className="text-3xl md:text-5xl font-black mb-4 text-slate-800 dark:text-white">Have a project in mind?</h2>
-          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
-            Tell us what you want to build and we&apos;ll set up a free consultation to talk it through.
-          </p>
-          <Link href="/contact" className="inline-flex items-center px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-bold text-lg hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-300">
-            Book a free consultation <BsArrowRight className="ml-3" />
-          </Link>
+      {/* CTA */}
+      <section className="px-4 sm:px-6 py-24 md:py-32">
+        <div data-reveal className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl bg-ink-950 px-8 py-16 text-center text-white md:px-16 md:py-24">
+          <div className="absolute inset-0 bg-grid-dark opacity-60" aria-hidden="true" />
+          <div className="absolute -top-24 left-1/2 h-64 w-[36rem] -translate-x-1/2 rounded-full bg-brand-500/30 blur-3xl" aria-hidden="true" />
+          <div className="relative">
+            <h2 className="font-display text-4xl font-semibold tracking-tight md:text-6xl">Tell us what you&apos;re building.</h2>
+            <p className="mx-auto mt-5 max-w-xl text-lg text-ink-300">A free 30-minute call with our team. You&apos;ll leave with a clear next step, whether or not we work together.</p>
+            <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Link href="/contact" className="group inline-flex items-center rounded-full bg-white px-7 py-3.5 font-semibold text-ink-900 hover:bg-ink-200">
+                Book a free consultation <BsArrowRight className="ml-2 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+              <a href={`mailto:${CONTACT_EMAIL}`} className="inline-flex items-center rounded-full border border-white/25 px-7 py-3.5 font-semibold text-white hover:border-white/60">
+                {CONTACT_EMAIL}
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
       <BetaSignupModal appName={betaApp} onClose={() => setBetaApp(null)} />
     </Layout>
+  );
+}
+
+function ProductRow({ product, index, onBeta }: { product: Product; index: number; onBeta: (name: string) => void }) {
+  const accent = accents[product.accent];
+  const shot = product.screenshots[1] ?? product.screenshots[0];
+  const metric = product.metrics.find((m) => m.value);
+  return (
+    <article data-reveal className="grid overflow-hidden rounded-3xl border border-ink-200 bg-white md:grid-cols-2 dark:border-ink-800 dark:bg-ink-900/60">
+      <div className={`flex flex-col p-8 md:p-12 ${index % 2 === 1 ? "md:order-2" : ""}`}>
+        <div className="flex items-center gap-3">
+          <span className="font-mono text-xs text-ink-400">0{index + 1}</span>
+          <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset ${statusClasses[product.status]}`}>{product.status}</span>
+          <span className="text-xs text-ink-500 dark:text-ink-400">{product.platform}</span>
+        </div>
+        <h3 className="mt-6 font-display text-3xl font-semibold tracking-tight text-ink-900 md:text-4xl dark:text-white">{product.name}</h3>
+        <p className="mt-2 text-lg text-ink-600 dark:text-ink-300">{product.tagline}</p>
+        <p className="mt-5 flex-grow leading-relaxed text-ink-500 dark:text-ink-400">{product.summary}</p>
+        <p className="mt-6 font-mono text-xs leading-relaxed text-ink-400">{product.stack.flatMap((s) => s.items).slice(0, 5).join("  ·  ")}</p>
+        <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-semibold">
+          <Link href={`/work/${product.slug}`} className="group inline-flex items-center rounded-full bg-ink-900 px-5 py-2.5 text-white hover:bg-ink-700 dark:bg-white dark:text-ink-900 dark:hover:bg-ink-200">
+            Read the case study <BsArrowRight className="ml-2 transition-transform group-hover:translate-x-0.5" />
+          </Link>
+          {product.beta ? (
+            <button onClick={() => onBeta(product.name)} className="text-ink-500 hover:text-ink-900 dark:text-ink-400 dark:hover:text-white">Join the beta</button>
+          ) : product.link ? (
+            <a href={product.link.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-ink-500 hover:text-ink-900 dark:text-ink-400 dark:hover:text-white">
+              {product.link.label} <BsArrowUpRight className="h-3 w-3" />
+            </a>
+          ) : null}
+        </div>
+      </div>
+      <div className={`relative flex min-h-[260px] items-center justify-center overflow-hidden border-t border-ink-200 md:border-t-0 dark:border-ink-800 ${accent.panel} ${index % 2 === 1 ? "md:order-1" : ""}`}>
+        <div className={`absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl ${accent.glow}`} aria-hidden="true" />
+        {shot ? (
+          <Image src={shot.src} alt={shot.alt} width={shot.width} height={shot.height} sizes="(max-width: 768px) 60vw, 280px" className="relative mt-12 w-[55%] max-w-[260px] translate-y-6 rounded-t-3xl border border-ink-200 shadow-2xl dark:border-ink-700" />
+        ) : (
+          <div className="relative p-10 text-center">
+            <product.icon className={`mx-auto h-14 w-14 ${accent.icon}`} />
+            {metric ? (
+              <p className="mt-6">
+                <span className="block font-display text-5xl font-semibold tracking-tight text-ink-900 dark:text-white">{metric.value}</span>
+                <span className="mt-1 block text-sm text-ink-500 dark:text-ink-400">{metric.label}</span>
+              </p>
+            ) : (
+              <p className="mt-6 font-mono text-xs uppercase tracking-[0.14em] text-ink-600 dark:text-ink-300">{product.highlights[0]}</p>
+            )}
+          </div>
+        )}
+      </div>
+    </article>
   );
 }
